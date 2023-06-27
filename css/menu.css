@@ -1,0 +1,90 @@
+:root {
+    --main-green: #005A4E;
+    --main-purp: #21005A;
+  }
+
+
+* {
+    font-family: 'Kanit', sans-serif;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    background-color: var(--main-green);
+    color: white;
+  }
+
+  .grid-container{
+    max-width: 95vw;
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: white;
+    align-items: center;
+  }
+
+  .grid-wrapper{
+    width: 100%;
+    max-width: 95vw;
+    height: 80%;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
+
+  .grid-item{
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    height: auto;
+
+  }
+
+  .grid-item img{
+    width: 100%;
+  }
+
+  .grid-item a {
+    font-size: 42px;
+    margin: 1rem;
+    text-decoration: none;
+    text-align: center;
+
+  }
+
+  @media screen and (min-width: 768px) {
+
+
+}
+
+  @media screen and (min-width: 1024px) {
+
+
+    .grid-item{
+        width: 30%;
+        height: auto;
+    }
+
+    .grid-container{
+        min-height: 75vh;
+    }
+
+
+}
+
+  @media screen and (min-width: 1448px) {
+    .grid-container{
+        min-height: 65vh;
+    }
+
+    .grid-item{
+        width: 15%;
+        height: auto;
+    }
+
+}
+  
+  
