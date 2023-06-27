@@ -1,0 +1,60 @@
+:root {
+    --main-green: #005A4E;
+    --main-purp: #21005A;
+    --main-white: #ffffff;
+
+  }
+
+  
+  * {
+    font-family: 'Kanit', sans-serif;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    background-color: var(--main-green);
+    color: black;
+  }
+
+  .grid-container{
+    max-width: 100vw;
+    min-height: 50vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: black;
+    align-items: center;
+  }
+
+  .grid-wrapper{
+    width: 100%;
+    max-width: 95vw;
+    height: 80%;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    font-size: 25px;
+    background-color: white;
+    border-radius: 10px;
+  }
+
+  .grid-item{
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1.5rem;
+    height: auto;
+    background-color: white;
+  }
+
+  .grid-item img{
+    width: 100%;
+  }
+
+  .grid-item a {
+
+    text-decoration: none;
+    text-align: center;
+    background-color: white;
+  }  
