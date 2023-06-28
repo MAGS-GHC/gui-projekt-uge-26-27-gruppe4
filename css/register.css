@@ -1,25 +1,19 @@
 :root {
-    --main-green: #005A4E;
-    --main-purp: #21005A;
+  --main-green: #005A4E;
+  --main-purp: #21005A;
+  --main-white: #ffffff;
+}
 
-  }
 
 * {
-    font-family: 'Kanit', sans-serif;
-    box-sizing: border-box;
-    padding: 0;
-    margin: 0;
-    color: white;
-  }
-
-.login-header{
-    font-size: 2rem;
+  font-family: 'Kanit', sans-serif;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  background-color: var(--main-green);
+  color: white;
 }
-  
-  .logo {
-    width: 200px;
-    height: 200px;
-  }
+
   
   .login-container {
     display: flex;
@@ -27,7 +21,6 @@
     align-items: center;
     width: 100vw;
     height: 100vh;
-    background-color: var(--main-green);
   }
   
   .main-wrapper {
@@ -43,7 +36,6 @@
     justify-content: center;
     align-items: center;
     width: 45vw;
-    
     height: 80vh;
   }
   
@@ -56,10 +48,16 @@
     height: 100vh;
 
   }
+
+  .login-text-container{
+    text-align: center;
+  }
   
   .login-inputs {
     width: 80%;
     font-size: 20px;
+    color: white;
+
   }
   
   form#login-form {
@@ -70,13 +68,20 @@
   
   .login-inputs input {
     height: 60px;
-    border: 1px solid black;
+    border: 1px solid white;
     border-radius: 7px;
-    margin: 10px 0px 10px 0px;
+    margin: 15px 0px 15px 0px;
     padding: 10px;
     font-size: 20px;
-    color: black;
+    width: 100%;
+    
   }
+
+
+  .login-inputs input::placeholder { 
+    color: white;
+    opacity: 1; 
+  }  
   
   .login-btn button {
     width: 100%;
@@ -90,10 +95,9 @@
   }
   
   h5.login-header {
-    font-size: 8vw;
-    margin: 10px 10px 30px 0px;
-    text-align: left;
-    width: 100%;
+    font-size: 22px;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
   }
   
   .error-message {
@@ -127,36 +131,23 @@
   }
   
   .login-img {
-    background-image: url(assets/images/land-2.jpg);
+    background-image: url(../assets/images/long-3.jpg);
     background-size: cover;
     background-position: center;
     height: 100%;
     width: 100%;
   }
 
-  .login-inputs input::placeholder { 
-    color: black;
-    opacity: 1; 
-  }  
+  
+  
 
-  .bottom-container{
-    width: 100%;
-    position: relative;
-    top: 20%;
+  @media screen and (min-width: 1200px) {
+    .login-img {
+      background-size: contain;
+   }
+
+  h5.login-header{
+    font-size: 28px;
   }
-
-  @media screen and (min-width: 768px) {
-
-    h5.login-header {
-        font-size: 4vw;
-        text-align: left;
-      }
-}
-
-  @media screen and (min-width: 1024px) {
-}
-
-  @media screen and (min-width: 1448px) {
-}
-  
-  
+    
+  }
