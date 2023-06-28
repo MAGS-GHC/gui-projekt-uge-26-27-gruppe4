@@ -11,5 +11,5 @@
 
 .nav-wrapper img{
     width: 200px;
-
+    cursor: pointer;
 }

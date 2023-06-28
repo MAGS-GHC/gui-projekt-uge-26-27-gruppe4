@@ -14,7 +14,7 @@
 }
 
 .main-matchSelect-container {
-  min-height: 100vh;
+  min-height: 65vh;
   min-width: 95vw;
 }
 
@@ -24,6 +24,7 @@
   justify-content: space-between;
   align-items: center;
   height: 40vh;
+  margin: 1rem;
 }
 
 .main-matchSelect-container h2 {

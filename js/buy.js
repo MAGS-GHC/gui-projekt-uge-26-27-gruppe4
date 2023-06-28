@@ -1,4 +1,3 @@
-
 document.addEventListener("DOMContentLoaded", function() {
   let dropdowns = document.getElementsByClassName("dropdown");
   for (let i = 0; i < dropdowns.length; i++) {
