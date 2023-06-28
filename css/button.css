@@ -21,4 +21,7 @@
     width: 90vw;
     height: 50px;
     border-radius: 10px;
+    border: none;
+    border: 1px solid white;
+    font-size: 22px;
   }
