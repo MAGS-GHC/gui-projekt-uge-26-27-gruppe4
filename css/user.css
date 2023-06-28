@@ -45,6 +45,7 @@
     padding: 1rem;
     height: auto;
     background-color: white;
+    color: black;
   }
 
   .grid-item img{
@@ -57,6 +58,7 @@
     text-decoration: none;
     text-align: center;
     background-color: white;
+    color: black;
   }  
 
   @media screen and (min-width: 600px) {
@@ -67,7 +69,7 @@
     }
 
     .grid-container{
-      min-height: 50vh;
+      min-height: 65vh;
       display: flex;
       margin-bottom: 50px;
     }
