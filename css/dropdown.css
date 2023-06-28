@@ -1,0 +1,39 @@
+/* Additional CSS for the dropdown menu */
+.dropdown {
+    position: relative;
+    display: inline-block;
+    width: 90vw; /* Set the width to 90% of the viewport width */
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    width: 100%;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown::after {
+    content: "\25BC"; /* Unicode arrow character */
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+
+.dropbtn{
+    width: 100%;
+}
