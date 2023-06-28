@@ -1,0 +1,46 @@
+:root {
+  --main-green: #005A4E;
+  --main-purp: #21005A;
+  --main-white: #ffffff;
+}
+
+* {
+  font-family: 'Kanit', sans-serif;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  background-color: var(--main-green);
+  color: var(--main-white);
+}
+
+.main-matchSelect-container {
+  min-height: 65vh;
+  min-width: 95vw;
+}
+
+.main-matchSelect-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 40vh;
+  margin: 1rem;
+}
+
+.main-matchSelect-container h2 {
+  font-size: 50px;
+  text-align: center;
+}
+
+#matchDropdown {
+  width: 80vw;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: 1px solid var(--main-white);
+  text-align-last: center; 
+}
+
+#matchDropdown option {
+  text-align: center; 
+}
