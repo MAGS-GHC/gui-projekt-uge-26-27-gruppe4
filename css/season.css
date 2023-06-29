@@ -11,7 +11,7 @@
     padding: 0;
     margin: 0;
     background-color: var(--main-green);
-    color: black;
+    color: white;
   }
 
   .grid-container{
@@ -40,4 +40,7 @@
     height: 100%;
     display: flex;
     justify-content: center;
+    flex-direction: column;
+    background-color: var(--main-purp);
   }
+
