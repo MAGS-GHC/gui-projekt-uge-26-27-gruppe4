@@ -17,10 +17,24 @@
 
   .mainBTN{
     background-color: var(--main-purp);
-    width: 100%;
-    width: 90vw;
+    width: 25vw;
     height: 50px;
     border-radius: 10px;
     border: none;
     font-size: 22px;
+  }
+
+  .mainBTN:hover{
+    background-color: var(--main-white);
+    color: var(--main-green);
+  }
+
+
+
+
+  @media screen and (min-width: 768px) {
+    .mainBTN{
+      width: 25vw;
+    }
+
   }
