@@ -129,13 +129,14 @@ app.post('/usersVFF/register', async (req, res) => {
 /*---------------------------------------------Tickets  --------------------------------------------------------*/
 
   app.post('/tickets', async (req, res) => {
-    const { ticketName, amount } = req.body;
+    const { ticketName, amount, seat } = req.body;
   
     try {
       // Create a new ticket object
       const newTicket = {
         ticketName,
-        amount
+        amount,
+        seat
       };
   
       // Insert the ticket into the 'tickets' collection
@@ -167,23 +168,23 @@ startServer();
 
 async function generateTickets() {
     try {
-      const count = await db.collection('tickets').countDocuments();
+      const count = await db.collection('matches').countDocuments();
   
       if (count === 0) {
         const tickets = [];
         const gameName = 'Viborg VFF - Randers FC';
         const gamePrice = 200
   
-        for (let i = 1; i <= 9000; i++) {
+        for (let i = 1; i <= 2460; i++) {
           const ticket = {
-            id: i,
             gameName,
-            gamePrice
+            gamePrice,
+            seat: i,
           };
           tickets.push(ticket);
         }
   
-        await db.collection('tickets').insertMany(tickets);
+        await db.collection('matches').insertMany(tickets);
         console.log('Tickets created successfully');
       } else {
         console.log('Tickets already exist in the database');
@@ -196,7 +197,7 @@ async function generateTickets() {
    function dropTickets() {
     try {
       // Delete all documents from the 'tickets' collection
-      const result = db.collection('tickets').deleteMany({});
+      const result = db.collection('matches').deleteMany({});
       console.log(`${result.deletedCount} tickets have been dropped from the collection`);
     } catch (error) {
       console.error('Error dropping tickets:', error);
@@ -206,11 +207,11 @@ async function generateTickets() {
 
 /*   async function createTicketCollection() {
     try {
-      await db.createCollection('tickets');
+      await db.createCollection('matches');
       console.log('Ticket collection created');
     } catch (error) {
       console.error('Error creating ticket collection:', error);
     }
   }
- */
-  
+
+   */
