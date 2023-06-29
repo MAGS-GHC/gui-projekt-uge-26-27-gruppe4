@@ -14,29 +14,61 @@
   body{
     background-color: var(--main-green);
   }
-  .grid-wrapper {  display: grid;
+
+
+  .grid-container {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 67vh;
+  }
+
+  .grid-wrapper { 
+    display: grid;
     grid-template-columns: 0.8fr 1.4fr 0.8fr;
-    grid-template-rows: 1fr 1fr 1fr; 
+    grid-template-rows: 1fr 1fr 1fr;
     background-color: var(--main-purp);
     gap: 6px 6px;
     grid-auto-flow: row;
     grid-template-areas:
-      "grid-itemName . grid-itemSeasonID"
-      "grid-itemNumber grid-itemIMG ."
-      "grid-itemMail . grid-itemSectionNR";
+        "grid-itemName . grid-itemSeasonID"
+        "grid-itemNumber grid-itemIMG ."
+        "grid-itemMail . grid-itemSectionNR";
+    max-height: 75vh;
+    min-height: 50vh;
+    place-items: start;
+    max-width: 80vw;
+    min-width: 50vw;
+    border-radius: 10px;
   }
   
-  .grid-itemName { grid-area: grid-itemName; }
+  .grid-itemName {
+     grid-area: grid-itemName; 
+    }
   
-  .grid-itemNumber { grid-area: grid-itemNumber; }
+  .grid-itemNumber {
+     grid-area: grid-itemNumber; 
+    }
   
-  .grid-itemMail { grid-area: grid-itemMail; }
+  .grid-itemMail {
+     grid-area: grid-itemMail; 
+    }
   
-  .grid-itemIMG { grid-area: grid-itemIMG; width: 33vw;}
+  .grid-itemIMG {
+     grid-area: grid-itemIMG;
+      width: 33vw;
+    }
+
   
-  .grid-itemSeasonID { grid-area: grid-itemSeasonID; }
+  .grid-itemSeasonID {
+     grid-area: grid-itemSeasonID;
+    }
   
-  .grid-itemSectionNR { grid-area: grid-itemSectionNR; }
+  .grid-itemSectionNR {
+    grid-area: grid-itemSectionNR; 
+    }
 
   .grid-itemSectionNR {
     grid-area: grid-itemSectionNR;
