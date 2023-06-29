@@ -161,14 +161,9 @@ app.post('/usersVFF/register', async (req, res) => {
 
   /*---------------------------------------------Tickets  --------------------------------------------------------*/
 
-
-
 app.use(express.static(__dirname));
 
 startServer();
-
-
-
 
 async function generateTickets() {
     try {
@@ -179,7 +174,7 @@ async function generateTickets() {
         const gameName = 'Viborg VFF - Randers FC';
         const gamePrice = 200
   
-        for (let i = 1; i <= 20; i++) {
+        for (let i = 1; i <= 9000; i++) {
           const ticket = {
             id: i,
             gameName,
