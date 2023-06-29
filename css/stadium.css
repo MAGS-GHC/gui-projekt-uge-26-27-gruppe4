@@ -1,0 +1,20 @@
+:root {
+    --main-green: #005A4E;
+    --main-purp: #21005A;
+    --main-white: #ffffff;
+  }
+
+  .stadium{
+    width: 500px;
+    height: 400px;
+    background-color: transparent;
+  }
+
+  .stadiumImageContainer{
+    width: 75vw;
+    height: 65vh;
+    background: white;
+    border-radius: 10px;
+    margin: 1rem;
+  }
+

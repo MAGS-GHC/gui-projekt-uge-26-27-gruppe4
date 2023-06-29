@@ -1,6 +1,7 @@
 :root {
     --main-green: #005A4E;
     --main-purp: #21005A;
+    --main-white: #ffffff;
   }
 
 
@@ -45,6 +46,7 @@
 
   .grid-item img{
     width: 100%;
+    fill: var(--main-white);
   }
 
   .grid-item a {
