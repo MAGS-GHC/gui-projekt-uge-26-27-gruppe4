@@ -1,0 +1,2 @@
+Section -> tickets - > seats + price + gameName+ matchday.
+
