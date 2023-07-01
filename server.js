@@ -1,7 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const bcrypt = require('bcrypt');
-const { MongoClient } = require('mongodb');
+const { MongoClient, ObjectId } = require('mongodb');
 const path = require('path');
 
 const app = express();
@@ -158,7 +158,7 @@ app.get('/matches', async (req, res) => {
   }
 });
 
-/* async function generateMatches() {
+async function generateMatches() {
   try {
     const count = await db.collection('matches').countDocuments();
 
@@ -175,6 +175,7 @@ app.get('/matches', async (req, res) => {
               tickets: [
                 {
                   price: 100,
+                  id: new ObjectId(),
                   seat: {
                     row: 1,
                     seatNr: 1,
@@ -182,6 +183,7 @@ app.get('/matches', async (req, res) => {
                 },
                 {
                   price: 100,
+                  id: new ObjectId(),
                   seat: {
                     row: 1,
                     seatNr: 2,
@@ -189,6 +191,7 @@ app.get('/matches', async (req, res) => {
                 },
                 {
                   price: 100,
+                  id: new ObjectId(),
                   seat: {
                     row: 1,
                     seatNr: 3,
@@ -235,6 +238,7 @@ app.get('/matches', async (req, res) => {
               tickets: [
                 {
                   price: 120,
+                  id: new ObjectId(),
                   seat: {
                     row: 'B',
                     seatNr: 1,
@@ -242,6 +246,7 @@ app.get('/matches', async (req, res) => {
                 },
                 {
                   price: 120,
+                  id: new ObjectId(),
                   seat: {
                     row: 'B',
                     seatNr: 2,
@@ -249,6 +254,7 @@ app.get('/matches', async (req, res) => {
                 },
                 {
                   price: 120,
+                  id: new ObjectId(),
                   seat: {
                     row: 'B',
                     seatNr: 3,
@@ -261,6 +267,7 @@ app.get('/matches', async (req, res) => {
               tickets: [
                 {
                   price: 80,
+                  id: new ObjectId(),
                   seat: {
                     row: 'A',
                     seatNr: 1,
@@ -268,6 +275,7 @@ app.get('/matches', async (req, res) => {
                 },
                 {
                   price: 80,
+                  id: new ObjectId(),
                   seat: {
                     row: 'A',
                     seatNr: 2,
@@ -275,6 +283,7 @@ app.get('/matches', async (req, res) => {
                 },
                 {
                   price: 80,
+                  id: new ObjectId(),
                   seat: {
                     row: 'A',
                     seatNr: 3,
@@ -287,6 +296,7 @@ app.get('/matches', async (req, res) => {
               tickets: [
                 {
                   price: 90,
+                  id: new ObjectId(),
                   seat: {
                     row: 'B',
                     seatNr: 1,
@@ -294,6 +304,7 @@ app.get('/matches', async (req, res) => {
                 },
                 {
                   price: 90,
+                  id: new ObjectId(),
                   seat: {
                     row: 'B',
                     seatNr: 2,
@@ -301,6 +312,7 @@ app.get('/matches', async (req, res) => {
                 },
                 {
                   price: 90,
+                  id: new ObjectId(),
                   seat: {
                     row: 'B',
                     seatNr: 3,
@@ -381,7 +393,7 @@ app.get('/matches', async (req, res) => {
 }
 
 
-function dropMatches() {
+/* function dropMatches() {
   try {
     // Delete all documents from the 'matches' collection
     const result = db.collection('matches').deleteMany({});
