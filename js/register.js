@@ -8,11 +8,13 @@ function registerUser(event) {
   
     const name = document.getElementById('name').value;
     const email = document.getElementById('email').value;
+    const number = document.getElementById('number').value;
     const password = document.getElementById('password').value;
   
     const userData = {
       name,
       email,
+      number,
       password
     };
   
