@@ -62,7 +62,7 @@ app.get('/user', (req, res) => {
 });
 
 app.post('/usersVFF/register', async (req, res) => {
-  const { name, email, nummer, password } = req.body;
+  const { name, email, number, password } = req.body;
 
   try {
     // Check if email already exists in the database
@@ -80,7 +80,7 @@ app.post('/usersVFF/register', async (req, res) => {
       const newUser = {
         name,
         email,
-        nummer,
+        number,
         password: hashedPassword,
         seasoncard: false,
       };
