@@ -5,15 +5,18 @@ const { MongoClient, ObjectId } = require('mongodb');
 const path = require('path');
 var cors = require('cors')
 
+
+var corsOptions = {
+  origin: 'https://viborg-ff-gruppe4.vercel.app',
+}
+
 const app = express();
+
+
 app.use(cors(corsOptions));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-var corsOptions = {
-  origin: 'https://viborg-ff-gruppe4.vercel.app',
-  optionsSuccessStatus: 200 
-}
 
 const PORT = 5000;
 const mongoURI ='mongodb+srv://Daniel:DMS1997@atlascluster.by0nbvr.mongodb.net/?retryWrites=true&w=majority';
