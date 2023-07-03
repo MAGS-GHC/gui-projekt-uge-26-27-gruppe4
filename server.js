@@ -20,8 +20,8 @@ async function startServer() {
     console.log('Connected to MongoDB');
     db = client.db(dbName);
     /* dropMatches(); */
-    generateMatches();
-    app.listen(PORT, () => {
+/*     generateMatches();
+ */    app.listen(PORT, () => {
       console.log(`Server is running on port ${PORT}`);
     });
   } catch (error) {
@@ -55,7 +55,7 @@ app.get('/user', (req, res) => {
 });
 
 app.post('/usersVFF/register', async (req, res) => {
-  const { name, email, password } = req.body;
+  const { name, email, nummer, password } = req.body;
 
   try {
     // Check if email already exists in the database
@@ -73,6 +73,7 @@ app.post('/usersVFF/register', async (req, res) => {
       const newUser = {
         name,
         email,
+        nummer,
         password: hashedPassword,
         seasoncard: false,
       };
