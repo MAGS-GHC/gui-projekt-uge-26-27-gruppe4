@@ -12,8 +12,6 @@ const corsOptions = {
 };
 
 const app = express();
-
-
 app.use(cors(corsOptions));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -30,9 +28,9 @@ async function startServer() {
     const client = await MongoClient.connect(mongoURI, { useUnifiedTopology: true });
     console.log('Connected to MongoDB');
     db = client.db(dbName);
-    /* dropMatches(); */
-/*     generateMatches();
- */    app.listen(PORT, () => {
+/*      dropMatches();
+    generateMatches(); */
+    app.listen(PORT, () => {
       console.log(`Server is running on port ${PORT}`);
     });
   } catch (error) {
@@ -45,21 +43,30 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'index.html'));
 });
 
+
 app.get('/buy', (req, res) => {
   res.sendFile(path.join(__dirname, 'buy', 'index.html'));
 });
+
 
 app.get('/menu', (req, res) => {
   res.sendFile(path.join(__dirname, 'menu', 'index.html'));
 });
 
+app.get('/create', (req, res) => {
+  res.sendFile(path.join(__dirname, 'create', 'index.html'));
+});
+
+
 app.get('/support', (req, res) => {
   res.sendFile(path.join(__dirname, 'support', 'index.html'));
 });
 
+
 app.get('/ticket', (req, res) => {
   res.sendFile(path.join(__dirname, 'ticket', 'index.html'));
 });
+
 
 app.get('/user', (req, res) => {
   res.sendFile(path.join(__dirname, 'user', 'index.html'));
