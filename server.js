@@ -11,7 +11,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 var corsOptions = {
-  origin: 'https://viborg-ff-gruppe4.vercel.app/',
+  origin: 'https://viborg-ff-gruppe4.vercel.app',
   optionsSuccessStatus: 200 
 }
 
