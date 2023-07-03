@@ -5,7 +5,6 @@
   }
   
   * {
-    background-color: var(--main-green);
     font-family: 'Kanit', sans-serif;
     box-sizing: border-box;
     padding: 0;
@@ -13,18 +12,30 @@
     word-break: break-word;
   }
 
+  body {
+    background-color: var(--main-green);
+    overflow: scroll;
+  }
+
   .table-container {
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
-    height: 15vh;
+    flex-direction: column;
+    height: 100%;
+    font-size: 14px;
+    
   }
 
   .table {
     border-collapse: collapse;
   }
 
-  .th, td {
+  table#gameData{
     border: 1px solid black;
     padding: 8px;
+    width: 95%;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
   }

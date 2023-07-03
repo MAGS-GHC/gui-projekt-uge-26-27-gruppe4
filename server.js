@@ -22,8 +22,8 @@ async function startServer() {
     });
     console.log("Connected to MongoDB");
     db = client.db(dbName);
-    /* dropMatches(); */
-    generateMatches();
+    /* dropMatches(); 
+    generateMatches();*/
     app.listen(PORT, () => {
       console.log(`Server is running on port ${PORT}`);
     });
@@ -161,7 +161,7 @@ app.get("/matches", async (req, res) => {
   }
 });
 
-async function generateMatches() {
+/* async function generateMatches() {
   try {
     const count = await db.collection("matches").countDocuments();
 
@@ -391,7 +391,7 @@ async function generateMatches() {
   } catch (error) {
     console.error("Error generating matches:", error);
   }
-}
+}*/
 
 /* function dropMatches() {
   try {

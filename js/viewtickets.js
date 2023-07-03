@@ -1,4 +1,4 @@
-var table = document.getElementsByClassName("table-container");
+var table = document.querySelector(".table-container");
 
 async function getNewGameData() {
   var gameDataArray = [];
@@ -11,13 +11,27 @@ async function getNewGameData() {
     // var gameData = gameDataArray[i];
     table.innerHTML += `
     <table id="gameData">
-                    <tr>
-                        <th>Dato</th>
-                        <th>Kamp</th>
-                        <a href="../ticket/index.html"><th>Billet</th></a>
-                    </tr>
-                </table>
+        <div class="matchTable"> 
+            <tr>
+                <th>${matchData[i].matchDay} ${matchData[i].matchDate} ${matchData[i].matchTime}</th>
+                  <th>${matchData[i].matchName}</th>
+                      <th><button class="billetBTN jBounceIn">Billet</button></th>               
+                  </tr>
+                </div>
+            </table>
     `;
+  }
+  readTickets();
+}
+
+function readTickets() {
+  const billetBTN = document.querySelectorAll(".billetBTN");
+
+  for (let i = 0; i < billetBTN.length; i++) {
+    billetBTN[i].addEventListener("click", () => {
+      console.log("hej fra click");
+      window.location.href = "../ticket/index.html";
+    });
   }
 }
 
