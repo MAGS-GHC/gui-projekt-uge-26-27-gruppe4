@@ -26,7 +26,7 @@ function loginUser(event) {
         console.log('Login Response:', data);
   
         if (data.message === 'Login successful') {
-          fetch('https://viborg-ff-gruppe4.vercel.app//usersVFF')
+          fetch('https://viborg-ff-gruppe4.vercel.app/usersVFF')
             .then(response => response.json())
             .then(users => {
               const user = users.find(user => user.email === email);
