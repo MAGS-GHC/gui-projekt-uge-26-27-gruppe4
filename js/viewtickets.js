@@ -1,37 +1,26 @@
-function pasteGameData(date, game, ticket) {
-  var table = document.getElementById("gameData");
-  var newRow = table.insertRow(-1);
+var table = document.getElementsByClassName("table-container");
 
-  var dateCell = newRow.insertCell(0);
-  dateCell.innerHTML = date;
+async function getNewGameData() {
+  var gameDataArray = [];
 
-  var gameCell = newRow.insertCell(1);
-  gameCell.innerHTML = game;
+  const response = await fetch("http://localhost:5000/matches");
+  const matchData = await response.json();
+  console.log(matchData);
 
-  var ticketCell = newRow.insertCell(2);
-  ticketCell.innerHTML = ticket;
-}
-
-function getNewGameData() {
-  var gameDataArray = [
-    {
-      date: "2023-07-05",
-      game: "Viborg FF vs. AAB",
-      ticket: "Se billet",
-    },
-    {
-      date: "2023-08-05",
-      game: "Viborg FF vs. FC Midtjylland",
-      ticket: "Se billet",
-    },
-  ];
-
-  for (var i = 0; i < kampDataArray.length; i++) {
-    var kampData = kampDataArray[i];
-    pasteGameDataData(kampData.date, kampData.game, kampData.ticket);
+  for (var i = 0; i < matchData.length; i++) {
+    // var gameData = gameDataArray[i];
+    table.innerHTML += `
+    <table id="gameData">
+                    <tr>
+                        <th>Dato</th>
+                        <th>Kamp</th>
+                        <a href="../ticket/index.html"><th>Billet</th></a>
+                    </tr>
+                </table>
+    `;
   }
 }
 
 window.onload = function () {
-  getNewGameDataData();
+  getNewGameData();
 };
