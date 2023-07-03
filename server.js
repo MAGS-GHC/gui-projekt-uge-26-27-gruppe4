@@ -129,7 +129,6 @@ app.post('/matches', async (req, res) => {
   const { matchName, matchDay, matchDate,  matchTime, sections } = req.body;
 
   try {
-    // Create a new match object
     const newMatch = {
       matchName,
       matchDay,
@@ -138,7 +137,6 @@ app.post('/matches', async (req, res) => {
       sections,
     };
 
-    // Insert the match into the 'matches' collection
     await db.collection('matches').insertOne(newMatch);
     res.status(200).json({ message: 'Match inserted successfully' });
   } catch (error) {
@@ -149,7 +147,6 @@ app.post('/matches', async (req, res) => {
 
 app.get('/matches', async (req, res) => {
   try {
-    // Get all matches from the 'matches' collection
     const matches = await db.collection('matches').find().toArray();
     res.status(200).json(matches);
   } catch (error) {
@@ -324,7 +321,6 @@ async function generateMatches() {
         },
       ];
 
-      // Generating tickets for sections with 600 tickets
       for (let i = 0; i < matches.length; i++) {
         const sections = matches[i].sections;
       
