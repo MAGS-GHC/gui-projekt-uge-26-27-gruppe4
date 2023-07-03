@@ -1,0 +1,2 @@
+Section -> tickets - > seats + price + gameName+ matchday.
+https://drawsql.app/teams/gruppe-6-2/diagrams/viborgbooking
