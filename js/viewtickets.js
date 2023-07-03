@@ -1,4 +1,3 @@
-// Funktion til at indsætte en ny række i tabellen med gamedata
 function pasteGameData(date, game, ticket) {
   var table = document.getElementById("gameData");
   var newRow = table.insertRow(-1);
@@ -13,9 +12,7 @@ function pasteGameData(date, game, ticket) {
   ticketCell.innerHTML = ticket;
 }
 
-// Simulerer modtagelse af ny gamedata fra databasen
 function getNewGameData() {
-  // Antag, at du modtager gamedata som et objekt fra din database
   var gameDataArray = [
     {
       date: "2023-07-05",
@@ -29,14 +26,12 @@ function getNewGameData() {
     },
   ];
 
-  // Kald funktionen til at indsætte den nye gamedata i tabellen
   for (var i = 0; i < kampDataArray.length; i++) {
     var kampData = kampDataArray[i];
     pasteGameDataData(kampData.date, kampData.game, kampData.ticket);
   }
 }
 
-// Kald funktionen, når dokumentet er indlæst
 window.onload = function () {
   getNewGameDataData();
 };
