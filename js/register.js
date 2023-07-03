@@ -18,7 +18,7 @@ function registerUser(event) {
   
     console.log(userData)
   
-    fetch('http://localhost:5000/usersVFF/register', {
+    fetch('https://viborg-ff-gruppe4.vercel.app/register', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
