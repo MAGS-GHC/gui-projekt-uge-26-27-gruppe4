@@ -11,7 +11,7 @@ var cors = require('cors')
 const app = express();
 
 app.use(cors({
-  origin: 'https://viborg-ff.vercel.app'
+  origin: 'https://localhost:5000'
 }));
 
 app.use(bodyParser.json());
