@@ -6,9 +6,10 @@ const path = require('path');
 var cors = require('cors')
 
 
-var corsOptions = {
+const corsOptions = {
   origin: 'https://viborg-ff-gruppe4.vercel.app',
-}
+  optionsSuccessStatus: 200 
+};
 
 const app = express();
 

@@ -36,7 +36,7 @@ function registerUser(event) {
       
            
             setTimeout(() => {
-              window.location.href = '/menu/index.html';
+              window.location.href = '../menu/index.html';
             }, 2000);
           }
           if(data.message === 'Email already exists'){
