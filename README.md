@@ -29,3 +29,17 @@ ticket/index.html
 ############# IDE  ############
 
 Have footer som ikon i bunden så det er et pop up
+
+
+
+############### TING ################
+
+
+Lave om så sæsonkort så den ikke visser sektionen men istedet har et link til køb billet
+
+Lave så inden man vælger hvor mange man vil se at man så skal vælge køb billet / brug sæsonkort
+
+
+############ EVT #######################
+Køb sæsonkort?
+
