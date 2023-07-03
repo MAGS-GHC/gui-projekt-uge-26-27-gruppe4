@@ -155,7 +155,7 @@ app.get('/matches', async (req, res) => {
   }
 });
 
-async function generateMatches() {
+/* async function generateMatches() {
   try {
     const count = await db.collection('matches').countDocuments();
 
@@ -386,7 +386,7 @@ async function generateMatches() {
   } catch (error) {
     console.error('Error generating matches:', error);
   }
-}
+} */
 
 
 /* function dropMatches() {
