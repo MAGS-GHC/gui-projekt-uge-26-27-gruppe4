@@ -28,6 +28,11 @@ body {
     border-top-right-radius: 10px;
 }
 
+.seating-container {
+    margin-top: 20px;
+  }
+
+
 .seat.selected {
     background-color: green;
 }
@@ -87,7 +92,7 @@ body {
     box-shadow: 0 3px 10px whitesmoke;
 }
 
-.section-M {
+.currentSection {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -119,5 +124,60 @@ body {
     .showcase li {
         margin: 0 20px;
     }
+
+    #sectionK {
+        margin-left: 28%;
+    }
+    
+    #sectionJ {
+        margin-left: 11%;
+    }
+    
+    #sectionI {
+        margin-left: 11%;
+    }
+    
+    #sectionH {
+        margin-left: 11%;
+    }
+    
+    #sectionG {
+        margin-left: 23%;
+    }
 }
 
+.section {
+    display: none; /* Hide sections by default */
+  }
+
+.section-button {
+    margin-bottom: 15px;
+}
+
+#sectionM {
+    margin-left: 15.2%;
+}
+
+#sectionL {
+    margin-left: 15.2%;
+}
+
+#sectionK {
+    margin-left: 34.5%;
+}
+
+#sectionJ {
+    margin-left: 23.5%;
+}
+
+#sectionI {
+    margin-left: 23.5%;
+}
+
+#sectionH {
+    margin-left: 23.5%;
+}
+
+#sectionG {
+    margin-left: 31.5%;
+}

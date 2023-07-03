@@ -44,6 +44,26 @@ function handleSeatSelection(e) {
 // selects the seats and calls the function above
 document.querySelector('.container').addEventListener('click', handleSeatSelection);
 
+function showSection(section) {
+  // Hide all sections
+  const sections = document.getElementsByClassName('section');
+  for (let i = 0; i < sections.length; i++) {
+    sections[i].style.display = 'none';
+  }
+  
+  // Show the selected section
+  const selectedSection = document.getElementById(`section${section}`);
+  selectedSection.style.display = 'block';
+
+  // Get the currentSection div element
+  var sectionM = document.querySelector('.currentSection');
+
+  // Get the <p> element inside currentSection
+  var sectionText = document.querySelector('#sectionText');
+
+  // Set the text of the <p> based on the clicked button
+  sectionText.textContent = 'Section ' + section;
+}
 
 // Show the new populated ui with booked and selected seats
 populateUI();
