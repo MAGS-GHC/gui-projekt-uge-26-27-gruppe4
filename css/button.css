@@ -1,0 +1,40 @@
+:root {
+    --main-green: #005A4E;
+    --main-purp: #21005A;
+    --main-white: #ffffff;
+
+  }
+
+  
+  * {
+    font-family: 'Kanit', sans-serif;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    background-color: var(--main-green);
+  }
+
+
+  .mainBTN{
+    background-color: var(--main-purp);
+    width: 25vw;
+    height: 50px;
+    border-radius: 10px;
+    border: none;
+    font-size: 22px;
+  }
+
+  .mainBTN:hover{
+    background-color: var(--main-white);
+    color: var(--main-green);
+  }
+
+
+
+
+  @media screen and (min-width: 768px) {
+    .mainBTN{
+      width: 25vw;
+    }
+
+  }

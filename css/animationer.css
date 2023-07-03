@@ -1,0 +1,47 @@
+.jFloat {
+    -webkit-transition: 0.3s transform ease-out;
+    transition: 0.3s transform ease-out;
+  }
+  .jFloat:hover, .jFloat:focus, .jfloat:active {
+    -webkit-transform: translateY(-8px);
+    transform: translateY(-8px);
+  }
+
+  .jBounceUp {
+    -webkit-transition:margin .3s ease-out;
+    -moz-transition:margin .3s ease-out;
+    -o-transition:margin .3s ease-out;
+    transition:margin .3s ease-out;
+
+  }
+
+  .jBounceUp:hover {
+      animation: jBounceUp-frames 1s;
+  }
+
+  @keyframes jBounceUp-frames {
+      0%, 20%, 60%, 100% {
+          -webkit-transform: translateY(0);
+          transform: translateY(0);
+      }
+  
+      40% {
+          -webkit-transform: translateY(-20px);
+          transform: translateY(-20px);
+      }
+  
+      80% {
+          -webkit-transform: translateY(-10px);
+          transform: translateY(-10px);
+      }
+  }
+
+
+  .jBounceIn {
+	-webkit-transition: .6s cubic-bezier(.47,2.02,.31,-0.36);
+  transition: .6s cubic-bezier(.47,2.02,.31,-0.36);
+}
+.jBounceIn:hover, .jbounceIn:focus, .jbounceIn:active {
+	transform: scale(1.1);
+}
+
