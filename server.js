@@ -11,7 +11,7 @@ var cors = require('cors')
 const app = express();
 
 app.use(cors({
-  origin: 'https://localhost:5000'
+  origin: 'http://localhost:5000'
 }));
 
 app.use(bodyParser.json());
@@ -68,6 +68,7 @@ app.get('/ticket', (req, res) => {
 app.get('/user', (req, res) => {
   res.sendFile(path.join(__dirname, 'user', 'index.html'));
 });
+
 
 app.post('/usersVFF/register', async (req, res) => {
   const { name, email, number, password } = req.body;
@@ -415,6 +416,6 @@ app.get('/matches', async (req, res) => {
   }
 } */
 
-app.use(express.static(__dirname));
+app.use(express.static(path.join(__dirname, 'public')));
 
 startServer();
