@@ -6,13 +6,14 @@ const path = require('path');
 var cors = require('cors')
 
 
-const corsOptions = {
-  origin: 'https://viborg-ff-gruppe4.vercel.app',
-  optionsSuccessStatus: 200 
-};
+
 
 const app = express();
-app.use(cors(corsOptions));
+
+app.use(cors({
+  origin: 'https://viborg-ff.vercel.app'
+}));
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -51,10 +52,6 @@ app.get('/buy', (req, res) => {
 
 app.get('/menu', (req, res) => {
   res.sendFile(path.join(__dirname, 'menu', 'index.html'));
-});
-
-app.get('/create', (req, res) => {
-  res.sendFile(path.join(__dirname, 'create', 'index.html'));
 });
 
 
