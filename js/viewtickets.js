@@ -11,13 +11,13 @@ async function getNewGameData() {
     // var gameData = gameDataArray[i];
     table.innerHTML += `
     <table id="gameData">
-        <div class="matchTable"> 
+
             <tr>
                 <th>${matchData[i].matchDay} ${matchData[i].matchDate} ${matchData[i].matchTime}</th>
                   <th>${matchData[i].matchName}</th>
                       <th><button class="billetBTN jBounceIn">Billet</button></th>               
                   </tr>
-                </div>
+
             </table>
     `;
   }

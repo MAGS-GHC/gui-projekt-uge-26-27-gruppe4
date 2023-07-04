@@ -24,18 +24,41 @@
     flex-direction: column;
     height: 100%;
     font-size: 14px;
-    
+    margin-top: 50px;
   }
 
   .table {
     border-collapse: collapse;
   }
 
-  table#gameData{
+  #gameData{
     border: 1px solid black;
     padding: 8px;
     width: 95%;
     border-radius: 10px;
+    margin-bottom: 20px;
+  }
+
+  tr {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  @media screen and (min-width: 600px) {
+
+    .table-container{
+      font-size: 35px;
+    }
+
+    #gameData {
+      padding: 15px;
+    }
+
+    #gameData th:last-child {
+      display: flex;
+      align-items: center;
+  }
+
+
   }
