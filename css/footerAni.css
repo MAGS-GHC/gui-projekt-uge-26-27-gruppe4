@@ -1,0 +1,117 @@
+:root {
+    --main-green: #005A4E;
+    --main-purp: #21005A;
+    --main-white: #ffffff;
+  }
+
+
+  @font-face {
+    font-family: viborgMain;
+    src: url(../assets/ttf/Century\ Gothic.ttf);
+}
+
+
+* {
+    font-family: viborgMain;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+  }
+
+
+  
+
+  .main-animated-footer-container{
+    width: 100vw;
+    height: 45vh;
+    background-color: var(--main-white);
+    opacity: 0.9;
+    max-width: 95vw;
+  }
+
+  .footer-logo-wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    align-content: center;
+  }
+
+
+
+
+
+
+  .footer-social{
+    display: flex;
+    max-width: 95vw;
+  }
+
+  .main-logo{
+    width: 50%;
+  }
+
+  .footer-main-logo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+
+  .footer-soMe i{
+    font-size: 32px;
+    color: var(--main-green);
+  }
+
+
+  .footer-items-wrapper {  display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    gap: 20px 10px;
+    grid-auto-flow: row;
+    grid-template-areas:
+      "footer-item-1 footer-item-2"
+      "footer-item-3 footer-item-4"
+      "footer-item-5 footer-item-6"
+      "footer-item-7 footer-item-8";
+  }
+  
+  .footer-item-5 { grid-area: footer-item-5; }
+  
+  .footer-item-1 { grid-area: footer-item-1; }
+  
+  .footer-item-2 { grid-area: footer-item-2; }
+  
+  .footer-item-3 { grid-area: footer-item-3; }
+  
+  .footer-item-4 { grid-area: footer-item-4; }
+  
+  .footer-item-6 { grid-area: footer-item-6; }
+  
+  .footer-item-7 { grid-area: footer-item-7; }
+  
+  .footer-item-8 { grid-area: footer-item-8; }
+  
+  .footer-items-wrapper a{
+    font-size: 14px;
+    padding: 0px 0px 0px 10px;
+    color: var(--main-green);
+    text-decoration: none;
+  }
+
+  .footer-items-wrapper li{
+    list-style: none;
+    width: 100%;
+  }
+
+  .footer-items-wrapper ul{
+    font-size: 22px;
+    font-weight: 400;
+    margin: 5px 10px;
+    color: var(--main-green);
+    text-transform: uppercase;
+  }
+
+  .item{
+    height: 100%;
+  }
