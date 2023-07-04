@@ -20,7 +20,7 @@ function registerUser(event) {
   
     console.log(userData)
   
-    fetch('https://viborg-billet.azurewebsites.net/usersVFF/register', {
+    fetch('http://viborg-billet.azurewebsites.net/usersVFF/register', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -29,25 +29,18 @@ function registerUser(event) {
     })
       .then(response => response.json())
       .then(data => {
-        console.log(data);
+        console.log(data.message);
         if (data.message === 'Bruger registreret med succes') {
-
-            alert('User was created. You will go in 2 seconds after you click okay.');
-      
-           
+            alert('User was created. You will go in 2 seconds after you click okay.');                
             setTimeout(() => {
               window.location.href = '/menu/index.html';
             }, 2000);
           }
           if(data.message === 'Email already exists'){
             errorMSG.innerHTML = `<p> Mailen fandtes allerede tryk <a href="../"> her </a> for at logge ind`;
-          }   
-          
-          
+          }            
       })
       .catch(error => {
         console.error('Error:', error);
-       
-
       });
   }
