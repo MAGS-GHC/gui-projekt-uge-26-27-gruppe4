@@ -60,6 +60,16 @@ app.get('/user', (req, res) => {
   res.sendFile(path.join(__dirname, 'user', 'index.html'));
 });
 
+app.get('/usersVFF/register', async (req, res) => {
+  try {
+    // Fetch the JSON objects from the 'usersVFF' collection
+    const users = await db.collection('usersVFF').find().toArray();
+    res.status(200).json(users);
+  } catch (error) {
+    console.error('Error getting users:', error);
+    res.status(500).json({ message: 'Could not get users' });
+  }
+});
 
 app.post('/usersVFF/register', async (req, res) => {
   const { name, email, number, password } = req.body;
@@ -97,7 +107,6 @@ app.post('/usersVFF/register', async (req, res) => {
 
 app.post('/usersVFF/login', async (req, res) => {
   const { email, password } = req.body;
-
   try {
     // Find the user with the specified email in the database
     const user = await db.collection('usersVFF').findOne({ email });
