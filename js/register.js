@@ -8,17 +8,19 @@ function registerUser(event) {
   
     const name = document.getElementById('name').value;
     const email = document.getElementById('email').value;
+    const number = document.getElementById('number').value;
     const password = document.getElementById('password').value;
   
     const userData = {
       name,
       email,
+      number,
       password
     };
   
     console.log(userData)
   
-    fetch('http://localhost:5000/usersVFF/register', {
+    fetch('http://localhost:4000/usersVFF/register', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
