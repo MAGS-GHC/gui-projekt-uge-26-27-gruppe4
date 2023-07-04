@@ -1,14 +1,11 @@
 var table = document.querySelector(".table-container");
 
 async function getNewGameData() {
-  var gameDataArray = [];
-
   const response = await fetch("http://localhost:5000/matches");
   const matchData = await response.json();
   console.log(matchData);
 
   for (var i = 0; i < matchData.length; i++) {
-    // var gameData = gameDataArray[i];
     table.innerHTML += `
     <table id="gameData">
 
