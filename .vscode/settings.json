@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "undefined/subscriptions/b3cce63d-6014-4bbf-a6ef-57294bc8093c/resourceGroups/ViborgBooking/providers/Microsoft.Web/sites/ViborgBooking",
+    "appService.deploySubpath": "."
+}

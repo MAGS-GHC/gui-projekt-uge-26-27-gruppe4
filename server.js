@@ -3,12 +3,19 @@ const bodyParser = require('body-parser');
 const bcrypt = require('bcrypt');
 const { MongoClient, ObjectId } = require('mongodb');
 const path = require('path');
+const cors = require('cors');
+
 
 const app = express();
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cors(
+  { origin: '*'},
+  { method: "GET,HEAD,PUT,PATCH,POST,DELETE"}
+  ))
 
-const PORT = 5000;
+const PORT = 4000;
 const mongoURI ='mongodb+srv://Daniel:DMS1997@atlascluster.by0nbvr.mongodb.net/?retryWrites=true&w=majority';
 const dbName = 'ViborgVFF';
 
@@ -20,7 +27,7 @@ async function startServer() {
     console.log('Connected to MongoDB');
     db = client.db(dbName);
     /* dropMatches(); */
-    generateMatches();
+   /*  generateMatches(); */
     app.listen(PORT, () => {
       console.log(`Server is running on port ${PORT}`);
     });
@@ -29,7 +36,6 @@ async function startServer() {
   }
 }
 
-// Route for the root path ('/') - Send index.html file as response
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'index.html'));
 });
@@ -163,7 +169,7 @@ app.get('/matches', async (req, res) => {
   }
 });
 
-async function generateMatches() {
+/* async function generateMatches() {
   try {
     const count = await db.collection('matches').countDocuments();
 
@@ -395,7 +401,7 @@ async function generateMatches() {
   } catch (error) {
     console.error('Error generating matches:', error);
   }
-}
+} */
 
 
 /* function dropMatches() {

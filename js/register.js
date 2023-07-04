@@ -20,7 +20,7 @@ function registerUser(event) {
   
     console.log(userData)
   
-    fetch('http://localhost:5000/usersVFF/register', {
+    fetch('http://localhost:4000/usersVFF/register', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
