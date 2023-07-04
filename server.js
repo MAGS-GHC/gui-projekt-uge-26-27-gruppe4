@@ -60,9 +60,6 @@ app.get('/user', (req, res) => {
   res.sendFile(path.join(__dirname, 'user', 'index.html'));
 });
 
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'test.html'));
-});
 
 app.post('/usersVFF/register', async (req, res) => {
   const { name, email, number, password } = req.body;
