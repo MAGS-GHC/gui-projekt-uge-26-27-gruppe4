@@ -61,9 +61,7 @@ function showSection(section) {
   // Get the <p> element inside currentSection
   var sectionText = document.querySelector('#sectionText');
 
-  // Set the text of the <p> based on the clicked button
   sectionText.textContent = 'Section ' + section;
 }
 
-// Show the new populated ui with booked and selected seats
 populateUI();
