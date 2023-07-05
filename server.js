@@ -96,6 +96,19 @@ app.post('/usersVFF/register', async (req, res) => {
   }
 });
 
+
+
+app.get('/usersVFF', async (req, res) => {
+  try {
+    // Get all users from the database
+    const users = await db.collection('usersVFF').find().toArray();
+    res.status(200).json(users);
+  } catch (error) {
+    console.error('Error getting users:', error);
+    res.status(500).json({ message: 'Could not get users' });
+  }
+});
+
 app.post('/usersVFF/login', async (req, res) => {
   const { email, password } = req.body;
   try {
@@ -122,16 +135,7 @@ app.post('/usersVFF/login', async (req, res) => {
   }
 });
 
-app.get('/usersVFF', async (req, res) => {
-  try {
-    // Get all users from the database
-    const users = await db.collection('usersVFF').find().toArray();
-    res.status(200).json(users);
-  } catch (error) {
-    console.error('Error getting users:', error);
-    res.status(500).json({ message: 'Could not get users' });
-  }
-});
+
 
 app.post('/matches', async (req, res) => {
   const { matchName, matchDay, matchDate,  matchTime, sections } = req.body;
