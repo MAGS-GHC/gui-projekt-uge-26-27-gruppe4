@@ -16,7 +16,7 @@ app.use(cors(
    method: "GET,HEAD,PUT,PATCH,POST,DELETE"
   }));
 
-const PORT = 4000;
+const PORT = 8080;
 const mongoURI = process.env.MONGO_URI;
 const dbName = 'ViborgVFF';
 
