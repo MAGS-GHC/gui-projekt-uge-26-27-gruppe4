@@ -20,7 +20,8 @@ function registerUser(event) {
   
     console.log(userData)
   
-    fetch('https://viborg-billet.azurewebsites.net/usersVFF/register', {
+    //fetch('http://localhost:4000/usersVFF/register', {
+    fetch('http://viborg-billet.azurewebsites.net/usersVFF/register', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

@@ -96,8 +96,6 @@ app.post('/usersVFF/register', async (req, res) => {
   }
 });
 
-
-
 app.get('/usersVFF', async (req, res) => {
   try {
     // Get all users from the database
