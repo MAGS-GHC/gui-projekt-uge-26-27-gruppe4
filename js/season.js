@@ -1,23 +1,27 @@
 var grid = document.querySelector(".grid-container");
 
-function seeSeasonCard() {
+async function seeSeasonCard() {
+  const response = await fetch("http://localhost:4000/usersVFF");
+  const userData = await response.json();
+  console.log(userData);
+
   grid.innerHTML += `
 <div class="grid-wrapper">
     <div class="grid-itemName">
-        Calle Callesen <br>
-        88888888
+        ${userData[6].name} <br>
+        ${userData[6].number}
     </div>
     <div class="grid-itemMail">
-        viborg@viborg.dk
+        ${userData[6].email}
     </div>
     <div class="grid-itemIMG">
         <img src="../assets/images/teamphoto.jpg" alt="">
     </div>
     <div class="grid-itemSeasonID">
-        SæsonkortNr.
+        Sæsonkortnummer: <br> 12345678
     </div>
     <div class="grid-itemSectionNR">
-        SektionNr.
+        Billetkode: <br> 12345678
     </div>
 </div>   
 `;
