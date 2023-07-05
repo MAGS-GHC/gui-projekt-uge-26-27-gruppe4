@@ -20,28 +20,28 @@ function registerUser(event) {
   
     console.log(userData)
   
-    //fetch('http://localhost:4000/usersVFF/register', {
-    fetch('http://viborg-billet.azurewebsites.net/usersVFF/register', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(userData)
-    })
-      .then(response => response.json())
-      .then(data => {
-        console.log(data.message);
-        if (data.message === 'Bruger registreret med succes') {
-            alert('User was created. You will go in 2 seconds after you click okay.');                
+      fetch('https://helloworld-pxy7m5opzq-lz.a.run.app/usersVFF/register', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(userData)
+      })
+        .then(response => response.json())
+        .then(data => {
+          console.log(data.message);
+          if (data.message === 'User registered successfully') {
+            alert('User was created. You will be redirected in 2 seconds.');                
             setTimeout(() => {
-              window.location.href = '/menu/index.html';
+              window.location.href = '../menu/index.html';
             }, 2000);
           }
-          if(data.message === 'Email already exists'){
-            errorMSG.innerHTML = `<p> Mailen fandtes allerede tryk <a href="../"> her </a> for at logge ind`;
+          if (data.message === 'Email already exists') {
+            errorMSG.innerHTML = `<p>Email already exists. Click <a href="../">here</a> to log in.</p>`;
           }            
-      })
-      .catch(error => {
-        console.error('Error:', error);
-      });
+        })
+        .catch(error => {
+          console.error('Error:', error);
+        });
+      
   }

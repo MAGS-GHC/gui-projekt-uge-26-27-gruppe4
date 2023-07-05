@@ -9,10 +9,13 @@
     <link rel="stylesheet" href="../css/support.css">
     <link rel="stylesheet" href="../css/nav.css">
     <link rel="stylesheet" href="../css/animationer.css">
+    <link rel="stylesheet" href="../css/spinner.css">
+    
 
     <!-- JS -->
     <script defer src="../js/support.js"></script>
     <script defer src="../js/nav.js"></script>
+    <script defer src="../js/spinner.js"></script>
 
 
 </head>
@@ -46,5 +49,62 @@
             </div>
         </div>
     </div>
-</head>
+
+
+    <div class="support-container">
+    <div class="main-container">
+        <div class="main-wrapper">
+            <div class="left-container">
+                <div class="nav-container">
+                    <div class="nav-wrapper">
+                        <img class="navLogo jBounceIn" src="assets/logo/viborg-ff-vector-logo.png" alt="Viborg FF logo">
+                    </div>
+                </div>  
+                    <div class="login-text-container">
+                        <h5 class="login-header">Brug for hjælp?</h5>
+                    </div>
+
+                    <div class="login-inputs">
+                        <form id="login-form">
+                                <label for="tel">Telefon:</label>
+                                <input type="tel" id="telefon" name="telefon" placeholder="Telefonnummer" required>
+                                <br>
+                                    <label for="password">Password:</label>
+                                        <input type="password" id="loginPassword" name="password" class="login-password" required>
+                                <br>
+
+                                <h6  >Har du ikke en bruger kan du <a href="create">Oprette dig her</a></h6>
+                                <br>
+                                
+                                <div class="login-btn">
+                                    <button class="jBounceIn" type="submit">Log in</button>
+                                </div>
+                        </form>
+                    </div>
+                    <div class="bottom-container">
+                        <div class="bottom-wrapper">
+                            <div class="left-icon-container">
+                                <div class="left-icon-wrapper">
+                                    <a href="https://www.instagram.com/viborgff/?hl=en" target="_blank"><i class="fa-brands soMeIcon fa-square-instagram jBounceUp"></i></a>
+                                </div>
+                            </div>
+                            <div class="copyright-container">
+                                <div class="copyright-wrapper">
+                                </div>
+                            </div>
+                            <div class="right-icon-container">
+                                <div class="right-icon-wrapper">
+                                   <a href="https://www.facebook.com/viborgff" target="_blank"><i class="fa-brands soMeIcon fa-square-facebook jBounceUp"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+            <div class="right-container">
+                <div class="login-img"></div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
 </html>

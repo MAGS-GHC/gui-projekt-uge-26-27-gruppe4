@@ -12,7 +12,7 @@ function loginUser(event) {
   
     console.log(loginData);
   
-    fetch('https://viborg-ff-gruppe4.vercel.app/usersVFF/login', {
+    fetch('https://helloworld-pxy7m5opzq-lz.a.run.app/usersVFF/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -26,7 +26,7 @@ function loginUser(event) {
         console.log('Login Response:', data);
   
         if (data.message === 'Login successful') {
-          fetch('https://viborg-ff-gruppe4.vercel.app/usersVFF')
+          fetch('https://helloworld-pxy7m5opzq-lz.a.run.app/usersVFF')
             .then(response => response.json())
             .then(users => {
               const user = users.find(user => user.email === email);

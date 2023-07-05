@@ -1,5 +1,5 @@
+require('dotenv').config();
 const express = require('express');
-const bodyParser = require('body-parser');
 const bcrypt = require('bcrypt');
 const { MongoClient, ObjectId } = require('mongodb');
 const path = require('path');
@@ -8,15 +8,16 @@ const cors = require('cors');
 
 const app = express();
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
 app.use(cors(
-  { origin: '*'},
-  { method: "GET,HEAD,PUT,PATCH,POST,DELETE"}
-  ))
+  { origin: '*',
+   method: "GET,HEAD,PUT,PATCH,POST,DELETE"
+  }));
 
 const PORT = 4000;
-const mongoURI ='mongodb+srv://Daniel:DMS1997@atlascluster.by0nbvr.mongodb.net/?retryWrites=true&w=majority';
+const mongoURI = process.env.MONGO_URI;
 const dbName = 'ViborgVFF';
 
 let db;
@@ -36,29 +37,6 @@ async function startServer() {
   }
 }
 
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'index.html'));
-});
-
-app.get('/buy', (req, res) => {
-  res.sendFile(path.join(__dirname, 'buy', 'index.html'));
-});
-
-app.get('/menu', (req, res) => {
-  res.sendFile(path.join(__dirname, 'menu', 'index.html'));
-});
-
-app.get('/support', (req, res) => {
-  res.sendFile(path.join(__dirname, 'support', 'index.html'));
-});
-
-app.get('/ticket', (req, res) => {
-  res.sendFile(path.join(__dirname, 'ticket', 'index.html'));
-});
-
-app.get('/user', (req, res) => {
-  res.sendFile(path.join(__dirname, 'user', 'index.html'));
-});
 
 
 

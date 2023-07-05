@@ -1,7 +1,7 @@
 var table = document.querySelector(".table-container");
 
 async function getNewGameData() {
-  const response = await fetch("http://localhost:5000/matches");
+  const response = await fetch("https://helloworld-pxy7m5opzq-lz.a.run.app/matches");
   const matchData = await response.json();
   console.log(matchData);
 
