@@ -20,7 +20,7 @@ function registerUser(event) {
   
     console.log(userData)
   
-    fetch('http://localhost:4000/usersVFF/register', {
+    fetch('https://viborg-ff-gruppe4.vercel.app/register', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -36,7 +36,7 @@ function registerUser(event) {
       
            
             setTimeout(() => {
-              window.location.href = '/menu/index.html';
+              window.location.href = '../menu/index.html';
             }, 2000);
           }
           if(data.message === 'Email already exists'){
