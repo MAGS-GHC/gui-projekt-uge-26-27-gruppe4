@@ -1,42 +1,37 @@
-// Funktion til at indsætte en ny række i tabellen med gamedata
-function pasteGameData(date, game, ticket) {
-  var table = document.getElementById("gameData");
-  var newRow = table.insertRow(-1);
+var table = document.querySelector(".table-container");
 
-  var dateCell = newRow.insertCell(0);
-  dateCell.innerHTML = date;
+async function getNewGameData() {
+  const response = await fetch("http://localhost:5000/matches");
+  const matchData = await response.json();
+  console.log(matchData);
 
-  var gameCell = newRow.insertCell(1);
-  gameCell.innerHTML = game;
+  for (var i = 0; i < matchData.length; i++) {
+    table.innerHTML += `
+    <table id="gameData">
 
-  var ticketCell = newRow.insertCell(2);
-  ticketCell.innerHTML = ticket;
+            <tr>
+                <th>${matchData[i].matchDay} ${matchData[i].matchDate} ${matchData[i].matchTime}</th>
+                  <th>${matchData[i].matchName}</th>
+                      <th><button class="billetBTN jBounceIn">Billet</button></th>               
+                  </tr>
+
+            </table>
+    `;
+  }
+  readTickets();
 }
 
-// Simulerer modtagelse af ny gamedata fra databasen
-function getNewGameData() {
-  // Antag, at du modtager gamedata som et objekt fra din database
-  var gameDataArray = [
-    {
-      date: "2023-07-05",
-      game: "Viborg FF vs. AAB",
-      ticket: "Se billet",
-    },
-    {
-      date: "2023-08-05",
-      game: "Viborg FF vs. FC Midtjylland",
-      ticket: "Se billet",
-    },
-  ];
+function readTickets() {
+  const billetBTN = document.querySelectorAll(".billetBTN");
 
-  // Kald funktionen til at indsætte den nye gamedata i tabellen
-  for (var i = 0; i < kampDataArray.length; i++) {
-    var kampData = kampDataArray[i];
-    pasteGameDataData(kampData.date, kampData.game, kampData.ticket);
+  for (let i = 0; i < billetBTN.length; i++) {
+    billetBTN[i].addEventListener("click", () => {
+      console.log("hej fra click");
+      window.location.href = "../ticket/index.html";
+    });
   }
 }
 
-// Kald funktionen, når dokumentet er indlæst
 window.onload = function () {
-  getNewGameDataData();
+  getNewGameData();
 };

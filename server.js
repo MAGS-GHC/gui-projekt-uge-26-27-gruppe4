@@ -3,20 +3,17 @@ const bodyParser = require('body-parser');
 const bcrypt = require('bcrypt');
 const { MongoClient, ObjectId } = require('mongodb');
 const path = require('path');
-var cors = require('cors')
-
-
+const cors = require('cors');
 
 
 const app = express();
 
-app.use(cors({
-  origin: 'http://localhost:5000'
-}));
-
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-
+app.use(cors(
+  { origin: '*'},
+  { method: "GET,HEAD,PUT,PATCH,POST,DELETE"}
+  ))
 
 const PORT = 4000;
 const mongoURI ='mongodb+srv://Daniel:DMS1997@atlascluster.by0nbvr.mongodb.net/?retryWrites=true&w=majority';
@@ -29,8 +26,8 @@ async function startServer() {
     const client = await MongoClient.connect(mongoURI, { useUnifiedTopology: true });
     console.log('Connected to MongoDB');
     db = client.db(dbName);
-/*      dropMatches();
-    generateMatches(); */
+    /* dropMatches(); */
+   /*  generateMatches(); */
     app.listen(PORT, () => {
       console.log(`Server is running on port ${PORT}`);
     });
@@ -39,35 +36,30 @@ async function startServer() {
   }
 }
 
-// Route for the root path ('/') - Send index.html file as response
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'index.html'));
 });
-
 
 app.get('/buy', (req, res) => {
   res.sendFile(path.join(__dirname, 'buy', 'index.html'));
 });
 
-
 app.get('/menu', (req, res) => {
   res.sendFile(path.join(__dirname, 'menu', 'index.html'));
 });
-
 
 app.get('/support', (req, res) => {
   res.sendFile(path.join(__dirname, 'support', 'index.html'));
 });
 
-
 app.get('/ticket', (req, res) => {
   res.sendFile(path.join(__dirname, 'ticket', 'index.html'));
 });
 
-
 app.get('/user', (req, res) => {
   res.sendFile(path.join(__dirname, 'user', 'index.html'));
 });
+
 
 
 app.post('/usersVFF/register', async (req, res) => {
@@ -104,9 +96,19 @@ app.post('/usersVFF/register', async (req, res) => {
   }
 });
 
+app.get('/usersVFF', async (req, res) => {
+  try {
+    // Get all users from the database
+    const users = await db.collection('usersVFF').find().toArray();
+    res.status(200).json(users);
+  } catch (error) {
+    console.error('Error getting users:', error);
+    res.status(500).json({ message: 'Could not get users' });
+  }
+});
+
 app.post('/usersVFF/login', async (req, res) => {
   const { email, password } = req.body;
-
   try {
     // Find the user with the specified email in the database
     const user = await db.collection('usersVFF').findOne({ email });
@@ -131,21 +133,13 @@ app.post('/usersVFF/login', async (req, res) => {
   }
 });
 
-app.get('/usersVFF', async (req, res) => {
-  try {
-    // Get all users from the database
-    const users = await db.collection('usersVFF').find().toArray();
-    res.status(200).json(users);
-  } catch (error) {
-    console.error('Error getting users:', error);
-    res.status(500).json({ message: 'Could not get users' });
-  }
-});
+
 
 app.post('/matches', async (req, res) => {
   const { matchName, matchDay, matchDate,  matchTime, sections } = req.body;
 
   try {
+    // Create a new match object
     const newMatch = {
       matchName,
       matchDay,
@@ -154,6 +148,7 @@ app.post('/matches', async (req, res) => {
       sections,
     };
 
+    // Insert the match into the 'matches' collection
     await db.collection('matches').insertOne(newMatch);
     res.status(200).json({ message: 'Match inserted successfully' });
   } catch (error) {
@@ -164,6 +159,7 @@ app.post('/matches', async (req, res) => {
 
 app.get('/matches', async (req, res) => {
   try {
+    // Get all matches from the 'matches' collection
     const matches = await db.collection('matches').find().toArray();
     res.status(200).json(matches);
   } catch (error) {
@@ -338,6 +334,7 @@ app.get('/matches', async (req, res) => {
         },
       ];
 
+      // Generating tickets for sections with 600 tickets
       for (let i = 0; i < matches.length; i++) {
         const sections = matches[i].sections;
       
@@ -416,6 +413,6 @@ app.get('/matches', async (req, res) => {
   }
 } */
 
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(__dirname));
 
 startServer();
