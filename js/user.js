@@ -1,7 +1,9 @@
 var grid = document.querySelector(".grid-container");
 
 async function seeProfile() {
-  const response = await fetch("http://localhost:4000/usersVFF");
+  const response = await fetch(
+    "https://helloworld-pxy7m5opzq-lz.a.run.app/usersVFF"
+  );
   const userData = await response.json();
   console.log(userData);
 
