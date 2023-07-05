@@ -49,6 +49,7 @@ app.post('/usersVFF/register', async (req, res) => {
     if (existingUser) {
       // Email already exists
       res.status(400).json({ message: 'Email already exists' });
+      console.log("test")
     } else {
       // Email does not exist, proceed with user registration
 
