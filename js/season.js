@@ -1,6 +1,6 @@
 var grid = document.querySelector(".grid-container");
 
-function seeTicket() {
+function seeSeasonCard() {
   grid.innerHTML += `
 <div class="grid-wrapper">
     <div class="grid-itemName">
@@ -24,5 +24,5 @@ function seeTicket() {
 }
 
 window.onload = function () {
-  seeTicket();
+  seeSeasonCard();
 };
