@@ -1,84 +1,79 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const bcrypt = require('bcrypt');
-const { MongoClient, ObjectId } = require('mongodb');
-const path = require('path');
-var cors = require('cors')
-
-
-
+const express = require("express");
+const bodyParser = require("body-parser");
+const bcrypt = require("bcrypt");
+const { MongoClient, ObjectId } = require("mongodb");
+const path = require("path");
+var cors = require("cors");
 
 const app = express();
 
-app.use(cors({
-  origin: 'http://localhost:5000'
-}));
+app.use(
+  cors({
+    origin: "http://localhost:4000",
+  })
+);
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-
 const PORT = 4000;
-const mongoURI ='mongodb+srv://Daniel:DMS1997@atlascluster.by0nbvr.mongodb.net/?retryWrites=true&w=majority';
-const dbName = 'ViborgVFF';
+const mongoURI =
+  "mongodb+srv://Daniel:DMS1997@atlascluster.by0nbvr.mongodb.net/?retryWrites=true&w=majority";
+const dbName = "ViborgVFF";
 
 let db;
 
 async function startServer() {
   try {
-    const client = await MongoClient.connect(mongoURI, { useUnifiedTopology: true });
-    console.log('Connected to MongoDB');
+    const client = await MongoClient.connect(mongoURI, {
+      useUnifiedTopology: true,
+    });
+    console.log("Connected to MongoDB");
     db = client.db(dbName);
-/*      dropMatches();
+    /*      dropMatches();
     generateMatches(); */
     app.listen(PORT, () => {
       console.log(`Server is running on port ${PORT}`);
     });
   } catch (error) {
-    console.error('Error connecting to MongoDB:', error);
+    console.error("Error connecting to MongoDB:", error);
   }
 }
 
 // Route for the root path ('/') - Send index.html file as response
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'index.html'));
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "index.html"));
 });
 
-
-app.get('/buy', (req, res) => {
-  res.sendFile(path.join(__dirname, 'buy', 'index.html'));
+app.get("/buy", (req, res) => {
+  res.sendFile(path.join(__dirname, "buy", "index.html"));
 });
 
-
-app.get('/menu', (req, res) => {
-  res.sendFile(path.join(__dirname, 'menu', 'index.html'));
+app.get("/menu", (req, res) => {
+  res.sendFile(path.join(__dirname, "menu", "index.html"));
 });
 
-
-app.get('/support', (req, res) => {
-  res.sendFile(path.join(__dirname, 'support', 'index.html'));
+app.get("/support", (req, res) => {
+  res.sendFile(path.join(__dirname, "support", "index.html"));
 });
 
-
-app.get('/ticket', (req, res) => {
-  res.sendFile(path.join(__dirname, 'ticket', 'index.html'));
+app.get("/ticket", (req, res) => {
+  res.sendFile(path.join(__dirname, "ticket", "index.html"));
 });
 
-
-app.get('/user', (req, res) => {
-  res.sendFile(path.join(__dirname, 'user', 'index.html'));
+app.get("/user", (req, res) => {
+  res.sendFile(path.join(__dirname, "user", "index.html"));
 });
 
-
-app.post('/usersVFF/register', async (req, res) => {
+app.post("/usersVFF/register", async (req, res) => {
   const { name, email, number, password } = req.body;
 
   try {
     // Check if email already exists in the database
-    const existingUser = await db.collection('usersVFF').findOne({ email });
+    const existingUser = await db.collection("usersVFF").findOne({ email });
     if (existingUser) {
       // Email already exists
-      res.status(400).json({ message: 'Email already exists' });
+      res.status(400).json({ message: "Email already exists" });
     } else {
       // Email does not exist, proceed with user registration
 
@@ -95,55 +90,55 @@ app.post('/usersVFF/register', async (req, res) => {
       };
 
       // Save user information in the database
-      await db.collection('usersVFF').insertOne(newUser);
-      res.status(200).json({ message: 'User registered successfully' });
+      await db.collection("usersVFF").insertOne(newUser);
+      res.status(200).json({ message: "User registered successfully" });
     }
   } catch (error) {
-    console.error('Error registering user:', error);
-    res.status(500).json({ message: 'Could not register user' });
+    console.error("Error registering user:", error);
+    res.status(500).json({ message: "Could not register user" });
   }
 });
 
-app.post('/usersVFF/login', async (req, res) => {
+app.post("/usersVFF/login", async (req, res) => {
   const { email, password } = req.body;
 
   try {
     // Find the user with the specified email in the database
-    const user = await db.collection('usersVFF').findOne({ email });
-    console.log('Fetched user:', user);
+    const user = await db.collection("usersVFF").findOne({ email });
+    console.log("Fetched user:", user);
     if (user) {
       // Compare the provided password with the hashed password in the database
       const result = await bcrypt.compare(password, user.password);
       if (result) {
         // Passwords match, login successful
-        res.status(200).json({ message: 'Login successful' });
+        res.status(200).json({ message: "Login successful" });
       } else {
         // Passwords do not match
-        res.status(401).json({ message: 'Invalid login credentials' });
+        res.status(401).json({ message: "Invalid login credentials" });
       }
     } else {
       // User not found
-      res.status(404).json({ message: 'User not found' });
+      res.status(404).json({ message: "User not found" });
     }
   } catch (error) {
-    console.error('Error fetching user:', error);
-    res.status(500).json({ message: 'Could not fetch user' });
+    console.error("Error fetching user:", error);
+    res.status(500).json({ message: "Could not fetch user" });
   }
 });
 
-app.get('/usersVFF', async (req, res) => {
+app.get("/usersVFF", async (req, res) => {
   try {
     // Get all users from the database
-    const users = await db.collection('usersVFF').find().toArray();
+    const users = await db.collection("usersVFF").find().toArray();
     res.status(200).json(users);
   } catch (error) {
-    console.error('Error getting users:', error);
-    res.status(500).json({ message: 'Could not get users' });
+    console.error("Error getting users:", error);
+    res.status(500).json({ message: "Could not get users" });
   }
 });
 
-app.post('/matches', async (req, res) => {
-  const { matchName, matchDay, matchDate,  matchTime, sections } = req.body;
+app.post("/matches", async (req, res) => {
+  const { matchName, matchDay, matchDate, matchTime, sections } = req.body;
 
   try {
     const newMatch = {
@@ -154,21 +149,21 @@ app.post('/matches', async (req, res) => {
       sections,
     };
 
-    await db.collection('matches').insertOne(newMatch);
-    res.status(200).json({ message: 'Match inserted successfully' });
+    await db.collection("matches").insertOne(newMatch);
+    res.status(200).json({ message: "Match inserted successfully" });
   } catch (error) {
-    console.error('Error inserting match:', error);
-    res.status(500).json({ message: 'Could not insert match' });
+    console.error("Error inserting match:", error);
+    res.status(500).json({ message: "Could not insert match" });
   }
 });
 
-app.get('/matches', async (req, res) => {
+app.get("/matches", async (req, res) => {
   try {
-    const matches = await db.collection('matches').find().toArray();
+    const matches = await db.collection("matches").find().toArray();
     res.status(200).json(matches);
   } catch (error) {
-    console.error('Error getting matches:', error);
-    res.status(500).json({ message: 'Could not get matches' });
+    console.error("Error getting matches:", error);
+    res.status(500).json({ message: "Could not get matches" });
   }
 });
 
@@ -405,7 +400,6 @@ app.get('/matches', async (req, res) => {
   }
 } */
 
-
 /* function dropMatches() {
   try {
     // Delete all documents from the 'matches' collection
@@ -416,6 +410,6 @@ app.get('/matches', async (req, res) => {
   }
 } */
 
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, "public")));
 
 startServer();
