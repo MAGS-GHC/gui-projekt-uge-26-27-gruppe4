@@ -24,7 +24,7 @@ body {
 }
 
 .seat {
-    background-color: #444451;
+    background-color: var(--main-white);
     height: 8px;
     width: 8px;
     margin: 1px;
@@ -70,6 +70,8 @@ body {
     color: #777;
     list-style-type: none;
     display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .showcase li {
@@ -86,9 +88,9 @@ body {
 .row {
     display: flex;
 }
-/* indset billede i stedet for background */
+
 .stadion {
-    background-color: greenyellow;
+    background-color: url(../assets/svg/stadium.svg);
     height: 50%;
     width: 100%;
     margin: 15px 0;

@@ -14,6 +14,7 @@ function updateSelectedCount() {
   //document.getElementById('count').innerText = selectedSeatsCount;
 }
 
+
 // Function to handle seat selection
 function handleSeatSelection(e) {
   // Check if the clicked seat is a seat and not already booked
@@ -25,11 +26,9 @@ function handleSeatSelection(e) {
     updateSelectedCount();
   }
 }
-
 // Add event listener for seat selection
-document.querySelector('.container').addEventListener('click', handleSeatSelection);
+document.querySelector('.seatContainer').addEventListener('click', handleSeatSelection);
 const seatingContainer = document.querySelector('.seating-container');
-const container = document.querySelector('.container');
 const svgStadium = document.querySelector('.svg-stadium');
 
 // Function to show the selected section and their seats
@@ -106,9 +105,6 @@ function handleSeatSelection(e) {
     updateSelectedCount();
   }
 }
-
-// selects the seats and calls the function above
-document.querySelector('.container').addEventListener('click', handleSeatSelection);
 
 function showSection(section) {
   // Hide all sections
