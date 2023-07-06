@@ -9,22 +9,22 @@ async function seeSeasonCard() {
   console.log(userData);
 
   const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
-  console.log(loggedInUser);
+  console.log(loggedInUser.seasoncard[0].seasoncardID);
 
   grid.innerHTML += `
 <div class="grid-wrapper">
     <div class="grid-itemName">
-        ${userData[loggedInUser].name} <br>
-        ${userData[loggedInUser].number}
+        ${loggedInUser.name} <br>
+        ${loggedInUser.number}
     </div>
     <div class="grid-itemMail">
-        ${userData[loggedInUser].email}
+        ${loggedInUser.email}
     </div>
     <div class="grid-itemIMG">
         <img src="../assets/images/teamphoto.jpg" alt="">
     </div>
     <div class="grid-itemSeasonID">
-        Sæsonkortnummer: <br> 12345678
+        Sæsonkortnummer: <br> ${loggedInUser.seasoncard[0].seasoncardID}
     </div>
     <div class="grid-itemSectionNR">
         Billetkode: <br> 12345678

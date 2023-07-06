@@ -1,5 +1,9 @@
-const seats = document.querySelectorAll('.row .seat');
+const seats = document.querySelectorAll('.seat');
 const seatContainer = document.getElementById('seatContainer');
+
+const seatID = document.querySelectorAll(".seat");
+
+const seatData = JSON.parse(localStorage.getItem("selectedMatch"));
 
 // Function that updates the count of booked seats and saves data to local storage
 function updateSelectedCount() {
@@ -8,12 +12,29 @@ function updateSelectedCount() {
   const seatsIndex = [...selectedSeats].map((seat) => [...seats].indexOf(seat));
   localStorage.setItem('selectedSeats', JSON.stringify(seatsIndex));
 
+
+
   // Count the number of selected seats
   const selectedSeatsCount = selectedSeats.length;
 
   // Update the UI to display the count of selected seats
   //document.getElementById('count').innerText = selectedSeatsCount;
 }
+
+
+console.log(seatData.sections[0].tickets[2].id)
+
+console.log(seats[33])
+
+for(let i = 0; i < seatID.length; i++){
+  
+  seatID[i].addEventListener("click", () =>{
+    console.log("denne blev klikket" + seatData.sections[0].tickets[i].id )
+  })
+}
+
+
+
 
 
 // Function to handle seat selection
@@ -82,6 +103,7 @@ function handleSectionClick(event) {
 // Function to populate the UI with booked and selected seats
 function populateUI() {
   const selectedSeats = JSON.parse(localStorage.getItem('selectedSeats'));
+  console.log(selectedSeats)
 
   // Check for selected seats in local storage
   if (selectedSeats !== null && selectedSeats.length > 0) {
