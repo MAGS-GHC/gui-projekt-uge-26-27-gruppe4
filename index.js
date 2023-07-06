@@ -26,9 +26,8 @@ async function startServer() {
   try {
     const client = await MongoClient.connect(mongoURI, { useUnifiedTopology: true });
     console.log('Connected to MongoDB');
-    db = client.db(dbName);
-    /* dropMatches(); */
-   /*  generateMatches(); */
+    db = client.db(dbName); 
+    generateMatches(); 
     app.listen(PORT, () => {
       console.log(`Server is running on port ${PORT}`);
     });
@@ -49,7 +48,6 @@ app.post('/usersVFF/register', async (req, res) => {
     if (existingUser) {
       // Email already exists
       res.status(400).json({ message: 'Email already exists' });
-      console.log("test")
     } else {
       // Email does not exist, proceed with user registration
 
@@ -62,7 +60,11 @@ app.post('/usersVFF/register', async (req, res) => {
         email,
         number,
         password: hashedPassword,
-        seasoncard: false,
+        seasoncard: [{
+          owner: false,
+          seasoncardID: new ObjectId(),
+          section: 'M FAN'
+        }]
       };
 
       // Save user information in the database
@@ -147,46 +149,21 @@ app.get('/matches', async (req, res) => {
   }
 });
 
-/* async function generateMatches() {
+ async function generateMatches() {
   try {
     const count = await db.collection('matches').countDocuments();
 
     
       const matches = [
         {
-          matchName: 'Viborg FF - FCM',
+          matchName: 'Viborg FF - FC Midtjylland',
           matchDay: 'SØN',
           matchDate: '17-09-2023',
-          matchTime: null,
+          matchTime:"KL 18:00",
           sections: [
             {
               sectionName: 'M',
-              tickets: [
-                {
-                  price: 100,
-                  id: new ObjectId(),
-                  seat: {
-                    row: 1,
-                    seatNr: 1,
-                  },
-                },
-                {
-                  price: 100,
-                  id: new ObjectId(),
-                  seat: {
-                    row: 1,
-                    seatNr: 2,
-                  },
-                },
-                {
-                  price: 100,
-                  id: new ObjectId(),
-                  seat: {
-                    row: 1,
-                    seatNr: 3,
-                  },
-                },
-              ],
+              tickets: [],
             },
             {
               sectionName: 'M Fan',
@@ -201,15 +178,15 @@ app.get('/matches', async (req, res) => {
               tickets: [],
             },
             {
-              sectionName: 'J Nedre',
+              sectionName: 'J',
               tickets: [],
             },
             {
-              sectionName: 'I Nedre',
+              sectionName: 'I',
               tickets: [],
             },
             {
-              sectionName: 'H Nedre',
+              sectionName: 'H',
               tickets: [],
             },
             {
@@ -218,102 +195,9 @@ app.get('/matches', async (req, res) => {
             },
           ],
         },
-        {
-          matchName: 'Viborg VFF - Randers FC',
-          matchDay: '30-06-2023',
-          sections: [
-            {
-              sectionName: 'M Fan',
-              tickets: [
-                {
-                  price: 120,
-                  id: new ObjectId(),
-                  seat: {
-                    row: 'B',
-                    seatNr: 1,
-                  },
-                },
-                {
-                  price: 120,
-                  id: new ObjectId(),
-                  seat: {
-                    row: 'B',
-                    seatNr: 2,
-                  },
-                },
-                {
-                  price: 120,
-                  id: new ObjectId(),
-                  seat: {
-                    row: 'B',
-                    seatNr: 3,
-                  },
-                },
-              ],
-            },
-            {
-              sectionName: 'Section 3',
-              tickets: [
-                {
-                  price: 80,
-                  id: new ObjectId(),
-                  seat: {
-                    row: 'A',
-                    seatNr: 1,
-                  },
-                },
-                {
-                  price: 80,
-                  id: new ObjectId(),
-                  seat: {
-                    row: 'A',
-                    seatNr: 2,
-                  },
-                },
-                {
-                  price: 80,
-                  id: new ObjectId(),
-                  seat: {
-                    row: 'A',
-                    seatNr: 3,
-                  },
-                },
-              ],
-            },
-            {
-              sectionName: 'Section 4',
-              tickets: [
-                {
-                  price: 90,
-                  id: new ObjectId(),
-                  seat: {
-                    row: 'B',
-                    seatNr: 1,
-                  },
-                },
-                {
-                  price: 90,
-                  id: new ObjectId(),
-                  seat: {
-                    row: 'B',
-                    seatNr: 2,
-                  },
-                },
-                {
-                  price: 90,
-                  id: new ObjectId(),
-                  seat: {
-                    row: 'B',
-                    seatNr: 3,
-                  },
-                },
-              ],
-            },
-          ],
-        },
-      ];
+    ]
+   
 
-      // Generating tickets for sections with 600 tickets
       for (let i = 0; i < matches.length; i++) {
         const sections = matches[i].sections;
       
@@ -324,14 +208,15 @@ app.get('/matches', async (req, res) => {
           if (
             sectionName === 'M' ||
             sectionName === 'L' ||
-            sectionName === 'J Nedre' ||
-            sectionName === 'I Nedre' ||
-            sectionName === 'H Nedre'
+            sectionName === 'I' ||
+            sectionName === 'H'
           ) {
             for (let row = 1; row <= 18; row++) {
               for (let seatNr = 1; seatNr <= 33; seatNr++) {
                 section.tickets.push({
                   price: 100,
+                  id: new ObjectId(),
+                  availability: false,
                   seat: {
                     row: row,
                     seatNr: seatNr,
@@ -344,6 +229,8 @@ app.get('/matches', async (req, res) => {
               for (let seatNr = 1; seatNr <= 13; seatNr++) { 
                 section.tickets.push({
                   price: 200, 
+                  id: new ObjectId(),
+                  availability: false,
                   seat: {
                     row: row,
                     seatNr: seatNr,
@@ -351,11 +238,29 @@ app.get('/matches', async (req, res) => {
                 });
               }
             }
-          } else if (sectionName === 'G') {
+          }
+          else if (sectionName === 'J') {
+            for (let row = 1; row <= 6; row++) {
+              for (let seatNr = 1; seatNr <= 25; seatNr++) { 
+                section.tickets.push({
+                  price: 200, 
+                  id: new ObjectId(),
+                  availability: false,
+                  seat: {
+                    row: row,
+                    seatNr: seatNr,
+                  },
+                });
+              }
+            }
+          } 
+          else if (sectionName === 'G') {
             for (let row = 1; row <= 18; row++) {
               for (let seatNr = 1; seatNr <= 10; seatNr++) { 
                 section.tickets.push({
                   price: 150, 
+                  id: new ObjectId(),
+                  availability: false,
                   seat: {
                     row: row,
                     seatNr: seatNr,
@@ -367,6 +272,8 @@ app.get('/matches', async (req, res) => {
             for (let ticketIndex = 1; ticketIndex <= 600; ticketIndex++) {
               section.tickets.push({
                 price: 100,
+                availability: false,
+                id: new ObjectId(),
                 seat: null,
               });
             }
@@ -379,10 +286,10 @@ app.get('/matches', async (req, res) => {
   } catch (error) {
     console.error('Error generating matches:', error);
   }
-} */
+} 
 
 
-/* function dropMatches() {
+ function dropMatches() {
   try {
     // Delete all documents from the 'matches' collection
     const result = db.collection('matches').deleteMany({});
@@ -390,7 +297,7 @@ app.get('/matches', async (req, res) => {
   } catch (error) {
     console.error('Error dropping matches:', error);
   }
-} */
+} 
 
 app.use(express.static(__dirname));
 
