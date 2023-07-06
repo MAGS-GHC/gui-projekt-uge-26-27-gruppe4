@@ -1,5 +1,6 @@
 const matchSelectDropdown = document.querySelector('.matchSelect-dropdown');
 const dropdownContent  = document.querySelector(".dropdown-content")
+const dropMenu = document.querySelector(".dropbtn");
 
 function matchDropdown() {
   fetch('https://helloworld-pxy7m5opzq-lz.a.run.app/matches')
@@ -28,6 +29,8 @@ function matchDropdown() {
 
 function selectMatch(match) {
     localStorage.setItem('selectedMatch', JSON.stringify(match));
+    dropMenu.innerHTML = `<p>${match.matchName}</p>`;
+
     
 }
 
