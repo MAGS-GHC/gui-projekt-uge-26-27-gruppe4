@@ -1,18 +1,23 @@
 var grid = document.querySelector(".grid-container");
 
 async function seeSeasonCard() {
-  const response = await fetch("http://localhost:4000/usersVFF");
+  const response = await fetch(
+    "https://helloworld-pxy7m5opzq-lz.a.run.app/usersVFF"
+  );
   const userData = await response.json();
   console.log(userData);
+
+  const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
+  console.log(loggedInUser);
 
   grid.innerHTML += `
 <div class="grid-wrapper">
     <div class="grid-itemName">
-        ${userData[6].name} <br>
-        ${userData[6].number}
+        ${userData[loggedInUser].name} <br>
+        ${userData[loggedInUser].number}
     </div>
     <div class="grid-itemMail">
-        ${userData[6].email}
+        ${userData[loggedInUser].email}
     </div>
     <div class="grid-itemIMG">
         <img src="../assets/images/teamphoto.jpg" alt="">
