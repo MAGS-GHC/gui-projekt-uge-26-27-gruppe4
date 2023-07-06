@@ -11,15 +11,24 @@ function matchDropdown() {
       }
     })
     .then((data) => {
-        for(let i = 0; i < data.length; i++){
-            dropdownContent.innerHTML += `
-            <a class="dropdown-matches"> ${data[i].matchName} ${data[i].matchDay} ${data[i].matchDate} ${data[i].matchTime} </a>           
-            `
+        for (let i = 0; i < data.length; i++) {
+          const matchElement = document.createElement('a');
+          matchElement.classList.add('dropdown-matches');
+          matchElement.textContent = `${data[i].matchName} ${data[i].matchDay} ${data[i].matchDate} ${data[i].matchTime}`;
+          matchElement.addEventListener('click', () => {
+            selectMatch(data[i]);
+          });
+          dropdownContent.appendChild(matchElement);
         }
-    })
+      })
     .catch((error) => {
       console.error('Error retrieving match data', error);
     });
+}
+
+function selectMatch(match) {
+    localStorage.setItem('selectedMatch', JSON.stringify(match));
+    
 }
 
 matchDropdown();

@@ -44,3 +44,4 @@ function showNextSlide() {
   }
   
   slides[slideIndex].classList.add("active");
+
