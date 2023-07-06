@@ -33,6 +33,4 @@ async function seeSeasonCard() {
 `;
 }
 
-window.onload = function () {
   seeSeasonCard();
-};
