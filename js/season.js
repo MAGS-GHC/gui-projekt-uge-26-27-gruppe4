@@ -23,10 +23,10 @@ async function seeSeasonCard() {
         <img src="../assets/images/teamphoto.jpg" alt="">
     </div>
     <div class="grid-itemSeasonID">
-        Sæsonkortnummer: <br> ${loggedInUser.seasoncard._id}
+        Sæsonkortnummer: <br> ${loggedInUser.seasoncard[0].seasoncardID}
     </div>
     <div class="grid-itemSectionNR">
-        Billetkode: <br> 12345678
+        Section: <br> ${loggedInUser.seasoncard[0].section}
     </div>
 </div>   
 `;

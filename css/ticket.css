@@ -17,10 +17,12 @@
   }
 
   .grid-container {
-    height: 80vh;
+    max-width: 95vw;
+    min-height: 50vh;
     display: flex;
     justify-content: center;
     align-items: center;
+    margin: auto;
   }
 
   .grid-wrapper {  
@@ -34,11 +36,15 @@
       "seat-info IMG"
       "seat-info IMG";
     height: 80vh;
-    width: 95%;
+    width: 100%;
     border-radius: 10px;
     background-color: white;
     justify-items: center;
     align-items: center;
+  }
+
+  h5 {
+    color: black;
   }
   
   .seat-info { grid-area: seat-info; }
@@ -91,6 +97,7 @@
 @media screen and (min-width: 600px) {
   .grid-container{
     font-size: 35px;
+    min-height: 65vh;
   }
 
   .Button {

@@ -5,13 +5,15 @@
 
   }
 
+  body{
+    background-color: var(--main-green);
+  }
   
   * {
     font-family: 'Kanit', sans-serif;
     box-sizing: border-box;
     padding: 0;
     margin: 0;
-    background-color: var(--main-green);
     color: black;
   }
 
@@ -71,7 +73,6 @@
     .grid-container{
       min-height: 65vh;
       display: flex;
-      margin-bottom: 50px;
     }
 
     .grid-item{
