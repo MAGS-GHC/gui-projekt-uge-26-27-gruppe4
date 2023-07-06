@@ -23,7 +23,7 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    height: 67vh;
+    height: 65vh;
   }
 
   .grid-wrapper { 
@@ -117,6 +117,10 @@
   }
 
   @media screen and (min-width: 600px) {
+
+    .grid-container{
+      height: 68vh;
+    }
     .grid-wrapper{
       height: 100%;
       font-size: 20px;
