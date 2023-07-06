@@ -8,14 +8,12 @@ async function getNewGameData() {
   for (var i = 0; i < matchData.length; i++) {
     table.innerHTML += `
     <table id="gameData">
-
-            <tr>
-                <th>${matchData[i].matchDay} ${matchData[i].matchDate} ${matchData[i].matchTime}</th>
-                  <th>${matchData[i].matchName}</th>
-                      <th><button class="billetBTN jBounceIn">Billet</button></th>               
-                  </tr>
-
-            </table>
+      <tr>
+        <th>${matchData[i].matchDay} ${matchData[i].matchDate} ${matchData[i].matchTime}</th>
+        <th>${matchData[i].matchName}</th>
+        <th><button class="billetBTN jBounceIn">Billet</button></th>               
+      </tr>
+    </table>
     `;
   }
   readTickets();
@@ -26,8 +24,9 @@ function readTickets() {
 
   for (let i = 0; i < billetBTN.length; i++) {
     billetBTN[i].addEventListener("click", () => {
-      console.log("hej fra click");
-      window.location.href = "../ticket/index.html";
+      localStorage.setItem("selectedMatchId", i);
+      console.log("hej fra click" + [i]);
+      window.location.href = "../ticket";
     });
   }
 }
