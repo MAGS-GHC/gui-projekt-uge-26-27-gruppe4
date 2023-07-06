@@ -1,42 +1,17 @@
 const seats = document.querySelectorAll('.row .seat');
 
-// The function that handles updates of booked seats and saves data to the server
+// Function that updates the count of booked seats and saves data to local storage
 function updateSelectedCount() {
   const selectedSeats = document.querySelectorAll('.row .seat.selected');
+
   const seatsIndex = [...selectedSeats].map((seat) => [...seats].indexOf(seat));
-
-  // opret et object med seat data
-  const seatData = {
-    selectedSeats: seatsIndex,
-  };
-
-  // kender ikke lige det endpoint vi skal fetch fra..
-  fetch('https://helloworld-pxy7m5opzq-lz.a.run.app/matches', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(seatData),
-  })
-    .then((response) => {
-      if (response.ok) {
-        // Seat data saved successfully
-        console.log('Seat data saved');
-      } else {
-        // Handle error
-        console.error('Error saving seat data');
-      }
-    })
-    .catch((error) => {
-      // Handle error
-      console.error('Error saving seat data', error);
-    });
+  localStorage.setItem('selectedSeats', JSON.stringify(seatsIndex));
 
   // Count the number of selected seats
   const selectedSeatsCount = selectedSeats.length;
 
   // Update the UI to display the count of selected seats
-  // document.getElementById('count').innerText = selectedSeatsCount;
+  //document.getElementById('count').innerText = selectedSeatsCount;
 }
 
 
@@ -94,7 +69,7 @@ function handleSectionClick(event) {
   
   if (sectionId === 'svg-section-MF') {
     // Handle Section-MF differently
-    //window.location.href = 'https://example.com';
+    // Example: window.location.href = 'https://example.com';
     console.log('Perform a different action for Section-MF');
   } else {
     // Handle other sections
@@ -105,36 +80,18 @@ function handleSectionClick(event) {
 
 // Function to populate the UI with booked and selected seats
 function populateUI() {
-  // kender ikke API så derfor henter vi intet endnu
-  fetch('https://helloworld-pxy7m5opzq-lz.a.run.app/matches')
-    .then((response) => {
-      if (response.ok) {
-        return response.json();
-      } else {
-        throw new Error('Error retrieving seat data');
-      }
-    })
-    .then((data) => {
-      // Check for selected seats in the received data
-      const selectedSeats = data.selectedSeats;
+  const selectedSeats = JSON.parse(localStorage.getItem('selectedSeats'));
 
-      if (selectedSeats !== null && selectedSeats.length > 0) {
-        // Iterate over the seats and add the "selected" class to the selected seats
-        seats.forEach((seat, index) => {
-          if (selectedSeats.indexOf(index) > -1) {
-            seat.classList.add('selected');
-          }
-        });
+  // Check for selected seats in local storage
+  if (selectedSeats !== null && selectedSeats.length > 0) {
+    // Iterate over the seats and add the "selected" class to the selected seats
+    seats.forEach((seat, index) => {
+      if (selectedSeats.indexOf(index) > -1) {
+        seat.classList.add('selected');
       }
-    })
-    .catch((error) => {
-      // Handle error
-      console.error('Error retrieving seat data', error);
     });
+  }
 }
-
-//event listener for seat selection
-document.querySelector('.seatContainer').addEventListener('click', handleSeatSelection);
 
 // Function to do the seat selection
 function handleSeatSelection(e) {
