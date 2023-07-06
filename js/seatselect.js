@@ -1,4 +1,5 @@
 const seats = document.querySelectorAll('.row .seat');
+const seatContainer = document.getElementById('seatContainer');
 
 // The function that handles updates of booked seats and saves data to the server
 function updateSelectedCount() {
@@ -52,7 +53,7 @@ function handleSeatSelection(e) {
   }
 }
 // Add event listener for seat selection
-document.querySelector('.seatContainer').addEventListener('click', handleSeatSelection);
+seatContainer.addEventListener('click', handleSeatSelection);
 const seatingContainer = document.querySelector('.seating-container');
 const svgStadium = document.querySelector('.svg-stadium');
 
@@ -132,9 +133,6 @@ function populateUI() {
       console.error('Error retrieving seat data', error);
     });
 }
-
-//event listener for seat selection
-document.querySelector('.seatContainer').addEventListener('click', handleSeatSelection);
 
 // Function to do the seat selection
 function handleSeatSelection(e) {

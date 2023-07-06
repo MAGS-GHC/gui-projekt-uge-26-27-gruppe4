@@ -4,7 +4,10 @@ function generateSeats() {
     var seatContainer = document.getElementById("seatContainer");
     seatContainer.innerHTML = "";
 
-    var sectionInfo = {
+
+
+
+    var sectionInfo ={
       "M": { totalSeats: 600, rows: 18 },
       "L": { totalSeats: 600, rows: 18 },
       "K": { totalSeats: 230, rows: 18 },

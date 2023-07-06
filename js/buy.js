@@ -21,3 +21,26 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 });
 
+
+
+const nextBTN = document.querySelectorAll(".mainBTN")
+var slideIndex = 0;
+var slides = document.querySelectorAll(".main-ticket-container");
+
+function showNextSlide() {
+    if (slideIndex < slides.length - 1) {
+      slides[slideIndex].classList.remove("active");
+      slideIndex++;
+      slides[slideIndex].classList.add("active");
+    } else {
+      console.log("Last slide reached.");
+    }
+  }
+  
+
+  for(let i = 0; i < nextBTN.length; i++){
+
+    nextBTN[i].addEventListener("click", showNextSlide);
+  }
+  
+  slides[slideIndex].classList.add("active");
