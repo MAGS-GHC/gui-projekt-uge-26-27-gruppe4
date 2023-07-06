@@ -11,7 +11,7 @@ function loginUser(event) {
 
   console.log(loginData);
 
-  fetch('https://helloworld-pxy7m5opzq-lz.a.run.app/usersVFF/login', {
+  fetch('https://gui-projekt-uge-26-27-gruppe4-pxy7m5opzq-lz.a.run.app/usersVFF/login', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -25,7 +25,7 @@ function loginUser(event) {
       console.log('Login Response:', data);
 
       if (data.message === 'Login successful') {
-        fetch('https://helloworld-pxy7m5opzq-lz.a.run.app/usersVFF')
+        fetch('https://gui-projekt-uge-26-27-gruppe4-pxy7m5opzq-lz.a.run.app/usersVFF')
           .then(response => response.json())
           .then(users => {
             const user = users.find(user => user.email === email);

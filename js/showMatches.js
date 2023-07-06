@@ -3,7 +3,7 @@ const dropdownContent  = document.querySelector(".dropdown-content")
 const dropMenu = document.querySelector(".dropbtn");
 
 function matchDropdown() {
-  fetch('https://helloworld-pxy7m5opzq-lz.a.run.app/matches')
+  fetch('https://gui-projekt-uge-26-27-gruppe4-pxy7m5opzq-lz.a.run.app/matches')
     .then((response) => {
       if (response.ok) {
         return response.json();

@@ -146,6 +146,12 @@ select#sectionSelect option{
     border: 1px solid white;
 }
 
+.seatsBTN:hover{
+    background-color: var(--main-white);
+    color: var(--main-green);
+    border-color: var(--main-green);
+}
+
 .section {
     display: none; /* Hide sections by default */
   }
