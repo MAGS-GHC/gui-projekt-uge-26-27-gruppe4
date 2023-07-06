@@ -2,7 +2,7 @@ var grid = document.querySelector(".grid-container");
 
 async function seeSeasonCard() {
   const response = await fetch(
-    "https://helloworld-pxy7m5opzq-lz.a.run.app/usersVFF"
+    "https://helloworld-pxy7m5opzq-lz.a.run.app/usersVFF"  
   );
   const userData = await response.json();
   console.log(userData);
