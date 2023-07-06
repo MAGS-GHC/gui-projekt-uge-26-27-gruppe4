@@ -25,8 +25,8 @@ body {
 
 .seat {
     background-color: var(--main-white);
-    height: 8px;
-    width: 8px;
+    height: 15px;
+    width: 15px;
     margin: 1px;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
@@ -89,19 +89,61 @@ body {
     display: flex;
 }
 
+.matchDropDown-container{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 8vh;
+}
+
 .stadion {
-    background-color: url(../assets/svg/stadium.svg);
-    height: 50%;
+    background: url(../assets/svg/SVG/Football-field.svg);
+    height: 25vh;
     width: 100%;
     margin: 15px 0;
-    transform: rotateX('-48deg');
-    box-shadow: 0 3px 10px whitesmoke;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-position: center;
+    
 }
+
+select#sectionSelect{
+    color: var(--main-green);
+    font-size: 16px;
+    height: 50px;
+}
+select#sectionSelect option{
+    color: var(--main-green);
+}
+
+
+
+.section-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 
 .currentSection {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.seatsBTN{
+    background-color: var(--main-var);
+    color: var(--main-white);
+    width: 25vw;
+    height: 50px;
+    border-radius: 10px;
+    border: none;
+    font-size: 22px;
+    border: 1px solid white;
 }
 
 .section {

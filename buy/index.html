@@ -167,6 +167,24 @@
                 <div class="main-matchSelect-wrapper">
                     <div class="matchSelect-header">
                         <h2>I hvilken sektion vil i sidde?</h2>
+                        <div class="matchDropDown-container">
+                        <select id="sectionSelect">
+                          <option value="M">M</option>
+                          <option value="L">L</option>
+                          <option value="K">K</option>
+                          <option value="J">J Nedre</option>
+                          <option value="I">I Nedre</option>
+                          <option value="H">H Nedre</option>
+                          <option value="G">G</option>
+                        </select>
+                        <button class="seatsBTN" onclick="generateSeats()">Se ledige pladser</button>
+                    </div>
+                    </div>
+                    <div class="section-container">
+                        <div class="stadion"></div>
+                        <div class="currentSection">
+                            <p id="sectionText">Section</p>
+                      </div>
                         <div id="seatingStatus">
                             <ul class="showcase">
                             <li>
@@ -183,25 +201,8 @@
                             </li>
                             </ul>
                         </div>
+                        <div id="seatContainer"></div>   
                     </div>
-                    <div>
-                        <div class="stadion"></div>
-                        <div class="currentSection">
-                            <p id="sectionText">Section</p>
-                        </div>
-                        <label for="sectionSelect">Select a Section:</label>
-                        <select id="sectionSelect">
-                          <option value="M">M</option>
-                          <option value="L">L</option>
-                          <option value="K">K</option>
-                          <option value="J">J Nedre</option>
-                          <option value="I">I Nedre</option>
-                          <option value="H">H Nedre</option>
-                          <option value="G">G</option>
-                        </select>
-                        <button onclick="generateSeats()">Generate Seats</button>
-                      </div>
-                      <div id="seatContainer"></div>   
                     <div class="main-btn-container">
                         <div class="main-btn-wrapper controls">
                             <button class="mainBTN jBounceIn">Næste</button>

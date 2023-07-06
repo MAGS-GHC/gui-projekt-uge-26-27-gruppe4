@@ -124,3 +124,6 @@ function printSeats(seatData, sectionCount){
   }
 
 }
+
+
+
