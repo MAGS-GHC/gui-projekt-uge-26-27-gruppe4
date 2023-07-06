@@ -114,8 +114,16 @@ select#sectionSelect{
     color: var(--main-green);
     font-size: 16px;
     height: 50px;
+    background-color: var(--main-green);
+    color: var(--main-white);
 }
 select#sectionSelect option{
+    background-color: var(--main-green);
+    color: var(--main-white);
+}
+
+select#sectionSelect option:focus{
+    background-color: var(--main-white);
     color: var(--main-green);
 }
 

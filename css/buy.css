@@ -30,6 +30,10 @@ body{
   align-items: center;
   height: 60vh;
   margin: 1rem;
+  overflow: scroll;
+  overflow-x: hidden;
+
+
 }
 
 .main-matchSelect-container h2 {
