@@ -1,7 +1,5 @@
 const seats = document.querySelectorAll('.row .seat');
-const seatingContainer = document.querySelector('.seating-container');
-const svgStadium = document.querySelector('.svg-stadium');
-const container = document.querySelector('.container');
+const seatContainer = document.getElementById('seatContainer');
 
 // Function that updates the count of booked seats and saves data to local storage
 function updateSelectedCount() {
@@ -22,7 +20,9 @@ function handleSeatSelection(e) {
 }
 
 // Add event listener for seat selection
-document.querySelector('#seatContainer').addEventListener('click', handleSeatSelection);
+seatContainer.addEventListener('click', handleSeatSelection);
+const seatingContainer = document.querySelector('.seating-container');
+const svgStadium = document.querySelector('.svg-stadium');
 
 // Function to show the selected section and their seats
 function showSection(section) {

@@ -48,4 +48,17 @@ body{
 
 #matchDropdown option {
   text-align: center; 
+  color: white;
+}
+
+.slide-container .main-ticket-container {
+  display: none;
+}
+
+.slide-container .main-ticket-container.active {
+  display: block;
+}
+
+.controls {
+  margin-top: 10px;
 }
