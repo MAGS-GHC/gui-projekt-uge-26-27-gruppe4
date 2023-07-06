@@ -4,6 +4,7 @@ async function seeSeasonCard() {
   const response = await fetch(
     "https://helloworld-pxy7m5opzq-lz.a.run.app/usersVFF"  
   );
+  console.log("test")
   const userData = await response.json();
   console.log(userData);
 
