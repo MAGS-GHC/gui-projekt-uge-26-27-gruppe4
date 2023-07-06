@@ -1,46 +1,53 @@
 function generateSeats() {
-    var sectionSelect = document.getElementById("sectionSelect");
-    var selectedSection = sectionSelect.value;
-    var seatContainer = document.getElementById("seatContainer");
-    seatContainer.innerHTML = "";
+  let sectionSelect = document.getElementById("sectionSelect");
+  let selectedSection = sectionSelect.value;
+  let seatContainer = document.getElementById("seatContainer");
+  seatContainer.innerHTML = "";
 
-    var sectionInfo = {
-      "M": { totalSeats: 600, rows: 18 },
-      "L": { totalSeats: 600, rows: 18 },
-      "K": { totalSeats: 230, rows: 18 },
-      "J Nedre": { totalSeats: 150, rows: 6 },
-      "I Nedre": { totalSeats: 150, rows: 6 },
-      "H Nedre": { totalSeats: 150, rows: 6 },
-      "G": { totalSeats: 280, rows: 18 }
-    };
+  // Fetch the seat data from the database
+  fetch("https://helloworld-pxy7m5opzq-lz.a.run.app/matches")
+    .then(function (response) {
+      if (response.ok) {
+        return response.json();
+      } else {
+        throw new Error("Error fetching seat data");
+      }
+    })
+    .then(function (seatData) {
+      // Find the selected section in the retrieved seat data here
+      let sectionData = seatData.find(function (seat) {
+        return seat.section === selectedSection;
+      });
 
-    var sectionData = sectionInfo[selectedSection];
-    if (!sectionData) {
-      console.log("Invalid section selected.");
-      return;
-    }
-
-    var totalSeats = sectionData.totalSeats;
-    var rows = sectionData.rows;
-    var seatsPerRow = Math.ceil(totalSeats / rows);
-
-
-    var seatCount = 0;
-    for (var i = 1; i <= rows; i++) {
-      var row = document.createElement("div");
-      row.classList.add("row");
-
-      var seatsInRow = Math.min(totalSeats - seatCount, seatsPerRow);
-      for (var j = 1; j <= seatsInRow; j++) {
-        var seat = document.createElement("div");
-        seat.classList.add("seat");
-
-        row.appendChild(seat);
-        seatCount++;
+      if (!sectionData) {
+        console.log("Invalid section selected.");
+        return;
       }
 
-      seatContainer.appendChild(row);
-    }
+      let totalSeats = sectionData.totalSeats;
+      let rows = sectionData.rows;
+      let seatsPerRow = Math.ceil(totalSeats / rows);
 
-    console.log("Seats printed: " + seatCount);
-  }
+      let seatCount = 0;
+      for (let i = 1; i <= rows; i++) {
+        let row = document.createElement("div");
+        row.classList.add("row");
+
+        let seatsInRow = Math.min(totalSeats - seatCount, seatsPerRow);
+        for (let j = 1; j <= seatsInRow; j++) {
+          let seat = document.createElement("div");
+          seat.classList.add("seat");
+
+          row.appendChild(seat);
+          seatCount++;
+        }
+
+        seatContainer.appendChild(row);
+      }
+
+      console.log("Seats printed: " + seatCount);
+    })
+    .catch(function (error) {
+      console.log("Error: " + error.message);
+    });
+}
