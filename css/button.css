@@ -41,6 +41,11 @@
     color: var(--main-green);
   }
 
+  .payBTN{
+    display: flex;
+    justify-content: center;
+  }
+
 
 
 
