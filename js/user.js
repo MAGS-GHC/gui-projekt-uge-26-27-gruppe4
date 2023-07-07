@@ -7,18 +7,21 @@ async function seeProfile() {
   const userData = await response.json();
   console.log(userData);
 
+  const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
+  console.log(loggedInUser);
+
   grid.innerHTML += `
 <div class="grid-wrapper">
     <div class="grid-item jFloat">
         <img src="../assets/logo/user-green.svg" alt="Køb ikon">
-        ${userData[6].name}
+        ${loggedInUser.name}
     </div>
-    <div class="grid-item jFloat"><img src="../assets/logo/Settings.svg" alt="Køb ikon">
-        Skift info
+    <a href=""><div class="grid-item jFloat"><img src="../assets/logo/Settings.svg" alt="Køb ikon">
+        Skift info</a>
     </div>
     <div class="grid-item jFloat">
-        <a href=""><img src="../assets/logo/Phonenumber.svg" alt="Køb ikon">
-            ${userData[6].number}</a>
+        <img src="../assets/logo/Phonenumber.svg" alt="Køb ikon">
+            ${loggedInUser.number}
     </div>
     <div class="grid-item jFloat">
         <a href="../viewtickets"><img src="../assets/logo/GamesSeen.svg" alt="Køb ikon">
@@ -30,7 +33,7 @@ async function seeProfile() {
     </div>
     <div class="grid-item jFloat">
         <a href=""><img src="../assets/logo/mailbox-green-svgrepo-com.svg" alt="Køb ikon">
-            ${userData[6].email}</a>
+            ${loggedInUser.email}</a>
     </div>
 </div>   
 `;
