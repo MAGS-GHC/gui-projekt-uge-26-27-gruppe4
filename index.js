@@ -27,7 +27,8 @@ async function startServer() {
     const client = await MongoClient.connect(mongoURI, { useUnifiedTopology: true });
     console.log('Connected to MongoDB');
     db = client.db(dbName); 
-    generateMatches(); 
+    /* dropMatches(); */ 
+    generateMatches();
     app.listen(PORT, () => {
       console.log(`Server is running on port ${PORT}`);
     });
