@@ -22,8 +22,6 @@ function updateSelectedCount() {
 }
 
 
-console.log(seatData.sections[0].tickets[2].id)
-
 console.log(seats[33])
 
 for(let i = 0; i < seatID.length; i++){
