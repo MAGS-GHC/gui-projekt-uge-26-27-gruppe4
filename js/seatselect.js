@@ -5,6 +5,7 @@ const seatID = document.querySelectorAll(".seat");
 
 const seatData = JSON.parse(localStorage.getItem("selectedMatch"));
 
+/*---------------------------------------------update localstorge with the count of booked seats------------------------------------------------------------*/
 // Function that updates the count of booked seats and saves data to local storage
 function updateSelectedCount() {
   const selectedSeats = document.querySelectorAll('.row .seat.selected');
@@ -20,8 +21,6 @@ function updateSelectedCount() {
   // Update the UI to display the count of selected seats
   //document.getElementById('count').innerText = selectedSeatsCount;
 }
-
-
 console.log(seats[33])
 
 for(let i = 0; i < seatID.length; i++){
@@ -31,10 +30,7 @@ for(let i = 0; i < seatID.length; i++){
   })
 }
 
-
-
-
-
+/*---------------------------------------------handels the seat selection--------------------------------------------------------*/
 // Function to handle seat selection
 function handleSeatSelection(e) {
   // Check if the clicked seat is a seat and not already booked
@@ -47,8 +43,13 @@ function handleSeatSelection(e) {
   }
 }
 
-let matches;
+// Add event listener for seat selection
+seatContainer.addEventListener('click', handleSeatSelection);
+const seatingContainer = document.querySelector('.seating-container');
+const svgStadium = document.querySelector('.svg-stadium');
 
+/*--------------------------------------------------- change seat availability start--------------------------------------------------------------------------*/
+let matches;
 // Function to handle booking tickets
 function bookTickets() {
   const selectedSeats = document.querySelectorAll('.row .seat.selected');
@@ -62,7 +63,6 @@ function bookTickets() {
 
   // Update seat availability in the matches data
   if (matches) {
-    console.log(matches)
     matches.forEach((match) => {
       match.sections.forEach((section) => {
         section.tickets.forEach((ticket) => {
@@ -72,32 +72,29 @@ function bookTickets() {
         });
       });
     });
+
+    // Make an HTTP request to the server-side script using fetch
+    fetch('https://gui-projekt-uge-26-27-gruppe4-pxy7m5opzq-lz.a.run.app/matches', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(matches),
+    })
+      .then((response) => {
+        if (response.ok) {
+          console.log('Tickets booked successfully!');
+        } else {
+          console.error('Error booking tickets:', response.statusText);
+        }
+      })
+      .catch((error) => {
+        console.error('Network error occurred while booking tickets:', error);
+      });
   } else {
     console.error('Matches data is not available');
   }
-
-  // Make an HTTP request to the server-side script using fetch
-  fetch('https://gui-projekt-uge-26-27-gruppe4-pxy7m5opzq-lz.a.run.app/matches', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(matches),
-  })
-    .then((response) => {
-      if (response.ok) {
-        console.log('Tickets booked successfully!');
-      } else {
-        console.error('Error booking tickets:', response.statusText);
-      }
-    })
-    .catch((error) => {
-      console.error('Network error occurred while booking tickets:', error);
-    });
 }
-
-// Add event listener for "Book Tickets" button
-document.getElementById('bookTicketsButton').addEventListener('click', bookTickets);
 
 // Fetch matches data from the server-side script
 fetch('https://gui-projekt-uge-26-27-gruppe4-pxy7m5opzq-lz.a.run.app/matches')
@@ -105,16 +102,17 @@ fetch('https://gui-projekt-uge-26-27-gruppe4-pxy7m5opzq-lz.a.run.app/matches')
   .then((data) => {
     matches = data;
     console.log('Matches data:', matches);
+
+    // Add event listener for "Book Tickets" button after matches data is available
+    document.getElementById('bookTicketsButton').addEventListener('click', bookTickets);
   })
   .catch((error) => {
     console.error('Error fetching matches data:', error);
   });
 
-// Add event listener for seat selection
-seatContainer.addEventListener('click', handleSeatSelection);
-const seatingContainer = document.querySelector('.seating-container');
-const svgStadium = document.querySelector('.svg-stadium');
+  /*--------------------------------------------------- change seat availability end--------------------------------------------------------------------------*/
 
+/*--------------------------------------------------- Show the section when section is chosen --------------------------------------------------------------------------*/
 // Function to show the selected section and their seats
 function showSection(section) {
   // Hide the svg-stadium
@@ -147,6 +145,7 @@ sectionImages.forEach((image) => {
   image.addEventListener('click', handleSectionClick);
 });
 
+/*--------------------------------------------------- handle the section click(while using the svg(not in use atm!)) --------------------------------------------------------------------------*/
 // Event handler for section image click
 function handleSectionClick(event) {
   const sectionId = event.target.getAttribute('id');
@@ -162,6 +161,7 @@ function handleSectionClick(event) {
   }
 }
 
+/*--------------------------------------------------- populate the ui with booked and selected seats --------------------------------------------------------------------------*/
 // Function to populate the UI with booked and selected seats
 function populateUI() {
   const selectedSeats = JSON.parse(localStorage.getItem('selectedSeats'));
@@ -178,6 +178,7 @@ function populateUI() {
   }
 }
 
+/*--------------------------------------------------- Handle the seat selection --------------------------------------------------------------------------*/
 // Function to do the seat selection
 function handleSeatSelection(e) {
   // Check if the clicked seat is a seat and not already booked
@@ -190,6 +191,7 @@ function handleSeatSelection(e) {
   }
 }
 
+/*--------------------------------------------------- Show the section when section is chosen(dublicate data) --------------------------------------------------------------------------*/
 function showSection(section) {
   // Hide all sections
   const sections = document.getElementsByClassName('section');
