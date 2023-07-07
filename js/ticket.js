@@ -14,7 +14,7 @@ async function seeTicket() {
     <br> <h5>${matchData[selectedMatchId].matchTime}</h5>
     <br> <h5>${matchData[selectedMatchId].matchName}</h5>
     </div>
-    <div class="seat-info"><h5>Sektion X <br> Række X <br> sæde X</h5> <br><br>
+    <div class="seat-info"><h5>Sektion X <br> Række X <br> sæde X</h5> <br>
     <button class = "Button">Print billet</button>
     </div>
     <div class="IMG"></div>

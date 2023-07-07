@@ -93,12 +93,28 @@
 
 @media screen and (min-width: 600px) {
   .grid-container{
-    font-size: 35px;
-    min-height: 68vh;
+    font-size: 30px;
+    min-height: 60vh;
+    height: 50%;
   }
-
+  .grid-wrapper {
+    height: 55vh;
+  }
   .Button {
-    font-size: 40px;
-    margin-top: 0;
+    font-size: 35px;
   }
+}
+
+@media screen and (min-width: 768px) {
+  
+
+    .grid-container{
+      font-size: 35px;
+      min-height: 68vh;
+    }
+  
+    .Button {
+      font-size: 40px;
+      margin-top: 0;
+    }
 }

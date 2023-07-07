@@ -26,7 +26,7 @@ async function seeSeasonCard() {
         Sæsonkortnummer: <br> ${loggedInUser.seasoncard[0].seasoncardID}
     </div>
     <div class="grid-itemSectionNR">
-        Section: <br> ${loggedInUser.seasoncard[0].section}
+        Section: <br> ${loggedInUser.seasoncard[0].section} <br> <a href="">Bestil billet</a>
     </div>
 </div>   
 `;
