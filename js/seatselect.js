@@ -48,6 +48,70 @@ function handleSeatSelection(e) {
     updateSelectedCount();
   }
 }
+
+// Define the matches variable in the global scope
+let matches;
+
+// Function to handle booking tickets
+function bookTickets() {
+  const selectedSeats = document.querySelectorAll('.row .seat.selected');
+
+  // Extract the necessary information about the selected seats
+  const seatData = Array.from(selectedSeats).map((seat) => {
+    const row = seat.parentNode.dataset.row;
+    const seatNr = seat.dataset.seatNr;
+    return { row, seatNr };
+  });
+
+  // Update seat availability in the matches data
+  if (matches) {
+    matches.forEach((match) => {
+      match.sections.forEach((section) => {
+        section.tickets.forEach((ticket) => {
+          if (ticket.seat && seatData.some((seat) => seat.row === ticket.seat.row && seat.seatNr === ticket.seat.seatNr)) {
+            ticket.availability = false;
+          }
+        });
+      });
+    });
+  } else {
+    console.error('Matches data is not available');
+  }
+
+  // Make an HTTP request to the server-side script using fetch
+  fetch('https://gui-projekt-uge-26-27-gruppe4-pxy7m5opzq-lz.a.run.app/matches', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(matches),
+  })
+    .then((response) => {
+      if (response.ok) {
+        console.log('Tickets booked successfully!');
+      } else {
+        console.error('Error booking tickets:', response.statusText);
+      }
+    })
+    .catch((error) => {
+      console.error('Network error occurred while booking tickets:', error);
+    });
+}
+
+// Add event listener for "Book Tickets" button
+document.getElementById('bookTicketsButton').addEventListener('click', bookTickets);
+
+// Fetch matches data from the server-side script
+fetch('https://gui-projekt-uge-26-27-gruppe4-pxy7m5opzq-lz.a.run.app/matches')
+  .then((response) => response.json())
+  .then((data) => {
+    matches = data;
+    console.log('Matches data:', matches);
+  })
+  .catch((error) => {
+    console.error('Error fetching matches data:', error);
+  });
+
 // Add event listener for seat selection
 seatContainer.addEventListener('click', handleSeatSelection);
 const seatingContainer = document.querySelector('.seating-container');

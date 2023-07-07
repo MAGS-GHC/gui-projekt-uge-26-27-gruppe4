@@ -82,7 +82,7 @@ function saveSeats(seatData, sectionCount){
 
       console.log(seatData.sections[sectionCount].tickets[x].id);
       console.log(
-        "denne blev klikket" + seatData.sections[sectionCount].tickets[x].id
+        "denne blev klikket " + seatData.sections[sectionCount].tickets[x].id
       );
 
       const clickedSeatId = seatData.sections[sectionCount].tickets[x].id;
