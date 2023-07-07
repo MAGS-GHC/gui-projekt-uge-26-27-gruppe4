@@ -47,14 +47,13 @@ function handleSeatSelection(e) {
   }
 }
 
-// Define the matches variable in the global scope
 let matches;
 
 // Function to handle booking tickets
 function bookTickets() {
   const selectedSeats = document.querySelectorAll('.row .seat.selected');
 
-  // Extract the necessary information about the selected seats
+  // Extract information about the selected seats
   const seatData = Array.from(selectedSeats).map((seat) => {
     const row = seat.parentNode.dataset.row;
     const seatNr = seat.dataset.seatNr;
@@ -63,6 +62,7 @@ function bookTickets() {
 
   // Update seat availability in the matches data
   if (matches) {
+    console.log(matches)
     matches.forEach((match) => {
       match.sections.forEach((section) => {
         section.tickets.forEach((ticket) => {
