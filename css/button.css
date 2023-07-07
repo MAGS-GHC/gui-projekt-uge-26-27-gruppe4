@@ -22,7 +22,21 @@
     font-size: 22px;
   }
 
-  .mainBTN:hover{
+.billetBTN{
+    background-color: var(--main-purp);
+    width: 12vw;
+    height: 25px;
+    border-radius: 10px;
+    border: none;
+    font-size: 14px;
+  }
+
+  .billetBTN:hover{
+    background-color: var(--main-white);
+    color: var(--main-green);
+  }
+
+  .billetBTN:hover{
     background-color: var(--main-white);
     color: var(--main-green);
   }

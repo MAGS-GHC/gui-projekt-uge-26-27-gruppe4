@@ -7,14 +7,41 @@
   .stadium{
     width: 500px;
     height: 400px;
-    background-color: transparent;
+    background-color: white;
   }
 
-  .stadiumImageContainer{
-    width: 75vw;
-    height: 65vh;
-    background: white;
-    border-radius: 10px;
-    margin: 1rem;
+  .section-select-grid {  
+    display: grid;
+    grid-template-columns: 0.2fr 1.3fr 1.3fr 1.3fr 1.3fr 1.3fr 0.2fr;
+    grid-template-rows: 0.2fr 1.2fr 1.3fr 1.3fr 1.3fr 1.3fr 0.2fr;
+    grid-auto-columns: 1fr 1fr 1fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+      ". . . . . . ."
+      ". . . . . . ."
+      ". M field field field field ."
+      ". M-Fan field field field field ."
+      ". L field field field field ."
+      ". . K J-nedre I-nedre G ."
+      ". . . . . . .";
   }
-
+  
+  .M { grid-area: M;
+  background-color: #005A4E; 
+}
+  
+  .M-Fan { grid-area: M-Fan; }
+  
+  .L { grid-area: L; }
+  
+  .K { grid-area: K; }
+  
+  .G { grid-area: G; }
+  
+  .field { grid-area: field; }
+  
+  .J-nedre { grid-area: J-nedre; }
+  
+  .I-nedre { grid-area: I-nedre; }
+  

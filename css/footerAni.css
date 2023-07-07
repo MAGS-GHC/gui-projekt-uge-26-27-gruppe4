@@ -176,7 +176,7 @@
 
 .slide-up.open {
   display: block;
-transform: translateY(-100%);
+transform: translateY(-50%);
 }
 
 .slide-up.fade {
@@ -214,9 +214,27 @@ body.disable-scroll .menu-container .icon {
   display: none;
 }
 
+
+.footer-item-7{
+  
+}
+
+
 @media screen and (min-width: 1024px) {
 
   .slide-up.open{
-    transform: translateY(-95%);
+    transform: translateY(-50%);
   }
+
+  .footer-social{
+    width: 30%;
+    justify-content: space-between;
+  }
+  .main-animated-footer-wrapper{
+    width: 100vw;
+  }
+  
+.footer-items-wrapper {
+width: 30%;
+}
 }
