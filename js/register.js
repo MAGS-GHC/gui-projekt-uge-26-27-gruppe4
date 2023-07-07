@@ -20,7 +20,7 @@ function registerUser(event) {
   
     console.log(userData)
   
-      fetch('https://helloworld-pxy7m5opzq-lz.a.run.app/usersVFF/register', {
+      fetch('https://gui-projekt-uge-26-27-gruppe4-pxy7m5opzq-lz.a.run.app/register', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
