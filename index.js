@@ -27,7 +27,7 @@ async function startServer() {
     const client = await MongoClient.connect(mongoURI, { useUnifiedTopology: true });
     console.log('Connected to MongoDB');
     db = client.db(dbName); 
-    /* dropMatches(); */ 
+    dropMatches(); 
     generateMatches();
     app.listen(PORT, () => {
       console.log(`Server is running on port ${PORT}`);
@@ -157,10 +157,10 @@ app.get('/matches', async (req, res) => {
     
       const matches = [
         {
-          matchName: 'Viborg FF - FC Midtjylland',
-          matchDay: 'SØN',
-          matchDate: '17-09-2023',
-          matchTime:"KL 18:00",
+          matchName: 'Viborg FF - Vejle Boldklub',
+          matchDay: 'MAN',
+          matchDate: '21-08-2023',
+          matchTime:"KL 19:00",
           sections: [
             {
               sectionName: 'M',
@@ -217,7 +217,7 @@ app.get('/matches', async (req, res) => {
                 section.tickets.push({
                   price: 100,
                   id: new ObjectId(),
-                  availability: false,
+                  availability: true,
                   seat: {
                     row: row,
                     seatNr: seatNr,
@@ -231,7 +231,7 @@ app.get('/matches', async (req, res) => {
                 section.tickets.push({
                   price: 200, 
                   id: new ObjectId(),
-                  availability: false,
+                  availability: true,
                   seat: {
                     row: row,
                     seatNr: seatNr,
@@ -246,7 +246,7 @@ app.get('/matches', async (req, res) => {
                 section.tickets.push({
                   price: 200, 
                   id: new ObjectId(),
-                  availability: false,
+                  availability: true,
                   seat: {
                     row: row,
                     seatNr: seatNr,
@@ -261,7 +261,7 @@ app.get('/matches', async (req, res) => {
                 section.tickets.push({
                   price: 150, 
                   id: new ObjectId(),
-                  availability: false,
+                  availability: true,
                   seat: {
                     row: row,
                     seatNr: seatNr,
@@ -273,7 +273,7 @@ app.get('/matches', async (req, res) => {
             for (let ticketIndex = 1; ticketIndex <= 600; ticketIndex++) {
               section.tickets.push({
                 price: 100,
-                availability: false,
+                availability: true,
                 id: new ObjectId(),
                 seat: null,
               });
