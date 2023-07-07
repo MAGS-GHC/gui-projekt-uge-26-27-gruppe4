@@ -150,26 +150,27 @@ app.get('/matches', async (req, res) => {
   }
 });
 
-app.patch('/matches/tickets/:ticketId', async (req, res) => {
-  const ticketId = req.params.ticketId;
+app.patch('/matches/tickets', async (req, res) => {
+  const { ticketIDs, availability } = req.body;
 
   try {
-    const result = await db.collection('matches').updateOne(
-      { 'sections.tickets.id': ticketId },
-      { $set: { 'sections.$[].tickets.$[ticket].availability': false } },
-      { arrayFilters: [{ 'ticket.id': ticketId }] }
+    const result = await db.collection('matches').updateMany(
+      { 'sections.tickets.id': { $in: ticketIDs } },
+      { $set: { 'sections.$[].tickets.$[ticket].availability': availability } },
+      { arrayFilters: [{ 'ticket.id': { $in: ticketIDs } }] }
     );
 
-    if (result.modifiedCount === 1) {
-      res.status(200).json({ message: 'Ticket updated successfully' });
+    if (result.modifiedCount > 0) {
+      res.status(200).json({ message: 'Tickets updated successfully' });
     } else {
-      res.status(404).json({ message: 'Ticket not found' });
+      res.status(404).json({ message: 'Tickets not found' });
     }
   } catch (error) {
-    console.error('Error updating ticket:', error);
-    res.status(500).json({ message: 'Could not update ticket' });
+    console.error('Error updating tickets:', error);
+    res.status(500).json({ message: 'Could not update tickets' });
   }
 });
+
 
 
  async function generateMatches() {
