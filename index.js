@@ -171,6 +171,7 @@ app.patch('/matches/tickets/:ticketId', async (req, res) => {
   }
 });
 
+
  async function generateMatches() {
   try {
     const count = await db.collection('matches').countDocuments();
