@@ -71,6 +71,43 @@
     }
 
     .grid-container{
+      min-height: 60vh;
+      display: flex;
+    }
+
+    .grid-wrapper {
+      height: 60vh;
+    }
+
+    .grid-item{
+      width: 30%;
+      padding: 0.5rem;
+      font-size: 30px;
+    }
+
+    .grid-item img{
+      width: 30%;
+      background-color: white;
+      display: flex;
+    }
+
+    .grid-item a {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+
+  }
+  
+  @media screen and (min-width: 768px) {
+
+    .nav-container{
+      display: flex;
+      justify-content: center;
+    }
+
+    .grid-container{
       min-height: 68vh;
       display: flex;
     }
@@ -94,8 +131,4 @@
     }
 
 
-  }
-  
-  .main-ticket-container{
-    height: 65vh;
   }
