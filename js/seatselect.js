@@ -96,21 +96,9 @@ function bookTickets() {
   }
 }
 
-// Fetch matches data from the server-side script
-fetch('https://gui-projekt-uge-26-27-gruppe4-pxy7m5opzq-lz.a.run.app/matches')
-  .then((response) => response.json())
-  .then((data) => {
-    matches = data;
-    console.log('Matches data:', matches);
-
-    // Add event listener for "Book Tickets" button after matches data is available
     document.getElementById('bookTicketsButton').addEventListener('click', bookTickets);
-  })
-  .catch((error) => {
-    console.error('Error fetching matches data:', error);
-  });
 
-  /*--------------------------------------------------- change seat availability end--------------------------------------------------------------------------*/
+/*--------------------------------------------------- change seat availability end--------------------------------------------------------------------------*/
 
 /*--------------------------------------------------- Show the section when section is chosen --------------------------------------------------------------------------*/
 // Function to show the selected section and their seats
