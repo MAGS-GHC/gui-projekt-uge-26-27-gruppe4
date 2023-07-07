@@ -150,6 +150,27 @@ app.get('/matches', async (req, res) => {
   }
 });
 
+app.patch('/matches/tickets/:ticketId', async (req, res) => {
+  const ticketId = req.params.ticketId;
+
+  try {
+    const result = await db.collection('matches').updateOne(
+      { 'sections.tickets.id': ticketId },
+      { $set: { 'sections.$[].tickets.$[ticket].availability': false } },
+      { arrayFilters: [{ 'ticket.id': ticketId }] }
+    );
+
+    if (result.modifiedCount === 1) {
+      res.status(200).json({ message: 'Ticket updated successfully' });
+    } else {
+      res.status(404).json({ message: 'Ticket not found' });
+    }
+  } catch (error) {
+    console.error('Error updating ticket:', error);
+    res.status(500).json({ message: 'Could not update ticket' });
+  }
+});
+
  async function generateMatches() {
   try {
     const count = await db.collection('matches').countDocuments();
